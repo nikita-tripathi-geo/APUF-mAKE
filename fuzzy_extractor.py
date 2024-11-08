@@ -1,20 +1,39 @@
 #!/usr/bin/python3
 
 # IMPORTS
-from secrets import randbits, token_bytes
+from secrets import token_bytes
 import multiprocessing
 import hmac
 from hashlib import sha3_384, sha384
 import time
 
+import numpy as np
 from utilities import xor_bytes
 from apuf_simulation import generate_n_APUFs, get_noisy_responses
-import numpy as np
 
 # Developed for Python 3.12.6
 
 
 class FuzzyExtractor:
+    '''
+    Implements a Fuzzy Extractor for key encoding and recovery using noisy data.
+    
+    This class allows generation of a cryptographic key using noisy samples,
+    and can reproduce the key using a "fresh" samples that close to the original.
+    
+    Attributes:
+        m (int): Length of individual sample in bits.
+        ell (int): Number of lockers.
+        xi (int): Length of the generated key in bytes.
+        lbd (int): Length of the MAC key in bytes.
+        t (int): Length of zero-padding in bytes.
+        nonce_len (int): Length of the nonce in bytes.
+        msg_len (int): Total length of the message in bytes.
+        h (list[bytes]): List of nonces used for each locker.
+        ctxt (list[bytes]): List of ciphertexts corresponding to each locker.
+        tag (bytes): Authentication tag.
+        zeros (bytes): Zero padding (for faster comparison).
+    '''
 
     def __init__(
             self,
@@ -27,6 +46,16 @@ class FuzzyExtractor:
             seed: int = None
     ) -> None:
         '''
+        Initializes the Fuzzy Extractor with given parameters.
+        
+        Args:
+            sample_len (int): Length of the input sample in bits.
+            locker_num (int): Number of lockers.
+            key_len (int): Desired length of the key to generate in bits.
+            mac_key_len (int): Length of MAC key for authentication in bits.
+            padding_len (int): Length of zero padding in bits.
+            nonce_len (int): Length of nonce used for each locker in bytes.
+            seed (int, optional): Seed for reproducibility (currently unused).
         '''
 
         # System parameters
@@ -59,8 +88,15 @@ class FuzzyExtractor:
             w: list[bytes]
     ) -> bytes:
         '''
-        TODO
+        Generates a cryptographic key and encodes it using noisy samples.
+        
+        Args:
+            w (list[bytes]): List of samples used to encode the key.
+        
+        Returns:
+            bytes: Generated cryptographic key.
         '''
+
 
         # Generate keys from OS randomness
         R = token_bytes(self.xi)
@@ -85,7 +121,13 @@ class FuzzyExtractor:
             w_: list[bytes]
     ) -> bytes:
         '''
-        TODO
+        Attempts to recover the cryptographic key using noisy samples.
+        
+        Args:
+            w_ (list[bytes]): List of samples used to recover the key.
+        
+        Returns:
+            bytes: The reproduced key if successful; None otherwise.
         '''
         # Begin opening locks
         for i in range(self.ell):
@@ -106,11 +148,18 @@ class FuzzyExtractor:
         return None
 
 
-def main(num_rep, LOCKER_NUM):
+def main(num_rep, locker_num):
+    '''
+    Simulates the Fuzzy Extractor with APUF-based samples.
+    
+    Args:
+        num_rep (int): Number of reproduction attempts.
+        LOCKER_NUM (int): Number of lockers used in Fuzzy Extractor.
+    '''
 
     APUF = generate_n_APUFs(1, 129, weight_mean=0, weight_stdev=0.05)
     APUF_adversary = generate_n_APUFs(1, 129, weight_mean=0, weight_stdev=0.05)
-    challenges = np.load("./3500_challenges.npy")[:LOCKER_NUM]
+    challenges = np.load("./5000_challenges.npy")[:locker_num]
 
 
     fe = FuzzyExtractor()
@@ -125,13 +174,14 @@ def main(num_rep, LOCKER_NUM):
     key = fe.generate(server_sample)
     t1 = time.perf_counter()
 
-    print(f"Gen took {t1-t} seconds")
-    print(f"Key = {key}")
+    # print(f"Gen took {t1-t} seconds")
+    # print(f"Key = {key}")
 
+    rep_times = []
+    match_num = 0
 
     for usr_attempt in range(num_rep):
-        
-        # User obtains a fresh sample W' 
+        # User obtains a fresh sample W'
         user_sample = [
             bytes(get_noisy_responses(1, [APUF], c, 0, 0.05*0.1 )) for c in challenges
         ]
@@ -140,79 +190,23 @@ def main(num_rep, LOCKER_NUM):
         key_ = fe.reproduce(user_sample)
         t1 = time.perf_counter()
 
-        print(f"Rep took {t1-t} seconds")
-        print(f"Key = {key_}")
+        # print(f"Rep took {t1-t} seconds")
+        # print(f"Key = {key_}")
 
-        print(f"Attempt id: {usr_attempt}", "Session keys match!" if key == key_ else "Session key mismatch")
+        rep_times.append(t1 - t)
+        # print(
+        #     f"Attempt id: {usr_attempt}",
+        #     "Session keys match!" if key == key_ else "Session key mismatch"
+        # )
+        if key == key_:
+            match_num += 1
+
+
+    print(np.mean(rep_times))
+    print(match_num)
+
 
 
 if __name__ == "__main__":
-    main(10, 3500)
-
-#     print(c1.shape)
-
-#     PASSWORD_LENGTH = 0
-#     PASSWORD = np.random.default_rng().integers(low=0, high=1, endpoint=True, size=(PASSWORD_LENGTH), dtype=np.uint8)
-#     print(f"Password: {PASSWORD}")
-
-#     t1 = time.time()
-#     # fe = FuzzyExtractor(l=3_500, file_prefix="test_APUF_new", pwd_len=PASSWORD_LENGTH)
-#     fe = FuzzyExtractor(l=LOCKER_NUM, file_prefix="debug/test_APUF_new", pwd_len=PASSWORD_LENGTH)
-#     t2 = time.time()
-#     print(f"Initialized (generated lpn arrays & GF(2^128)) in {t2 - t1} seconds")
-
-#     a = fe.gen(
-#         c1,
-#         pwd=PASSWORD
-#     )
-#     t3 = time.time()
-#     print(f"Ran GEN in {t3 - t2} seconds")
-
-#     results = []
-
-#     for t in range(num_rep):
-
-#         ct = np.concatenate([get_noisy_responses(1, [APUF], chal, noise_mean=0, noise_std=(0.05*0.1)) for chal in challenges  ])
-#         # ct = np.concatenate([get_noisy_responses(APUF_adversary, chal, noise_mean=0, noise_std=(0.05*0.1)) for chal in challenges  ])
-
-#         print(ct.shape, " Shape of Rep samples (responses)")
-#         np.savetxt("c1.txt", c1)
-#         np.savetxt("ct.txt", ct)
-
-#         # print(f"Distance from original: {1}")
-
-#         t1 = time.time()
-#         b = fe.rep_parallel(
-#             ct,
-#             pwd=PASSWORD,
-#             num_processes=1
-#             # num_processes=multiprocessing.cpu_count()
-#         )
-#         # b = fe.rep_parallel(
-#         #     ct[5],
-#         #     pwd=PASSWORD,
-#         #     num_processes=multiprocessing.cpu_count() // 3
-#         # )
-#         results.append(b)
-#         t2 = time.time()
-#         print(f"Ran REP parallel in {t2 - t1} seconds")
-
-
-
-
-#     print(a)
-#     print(len([r for r in results if r])/len(results))
-
-
-#     print("no problems so far")
-
-
-# if __name__ == '__main__':
-
-#     main(
-#         num_rep=1,
-#         LOCKER_NUM=3200
-#         )
-
-
-
+    for _ in range(50):
+        main(50, 3500)
