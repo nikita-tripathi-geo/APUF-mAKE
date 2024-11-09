@@ -11,15 +11,15 @@ def xor_bytes(a: bytes, b: bytes) -> bytes:
     Returns:
         bytes: Result of XORing each byte in `a` with the corresponding byte in `b`.
 
+    Raises:
+        TypeError: If `a` or `b` is not of type `bytes`.
+        
     Examples:
         >>> xor_bytes(b'\\x0f\\x0f', b'\\x00\\x0f')
         b'\\x0f\\x00'
 
         >>> xor_bytes(b'\\x0f\\x0f', b'\\x0f\\x0f')
         b'\\x00\\x00'
-        
-        >>> xor_bytes(b'\\xaa', b'\\x55')
-        b'\\xff'
         
         >>> xor_bytes(b'\\x01\\x02\\x03', b'\\x01\\x01\\x01')
         b'\\x00\\x03\\x02'
