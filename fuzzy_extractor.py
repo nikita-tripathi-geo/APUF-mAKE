@@ -55,7 +55,7 @@ class FuzzyExtractor:
             mac_key_len (int): Length of MAC key for authentication in bits.
             padding_len (int): Length of zero padding in bits.
             nonce_len (int): Length of nonce used for each locker in bytes.
-            seed (int, optional): Seed for reproducibility (currently unused).
+            seed (int, optional): Seed for reproducibility (currently unused, TODO).
         '''
 
         # System parameters
@@ -148,6 +148,75 @@ class FuzzyExtractor:
         return None
 
 
+    def reproduce_multithreaded(
+            self,
+            w: list[bytes],
+            num_processes: int = 1
+    ) -> bytes:
+        '''
+        TODO
+        '''
+
+        finished = multiprocessing.Array('b', False)
+        split = np.array_split(list(range(self.ell)), num_processes)
+        finished = multiprocessing.Manager().list([None for _ in range(num_processes)])
+
+        processes = []
+
+        for process_id in range(num_processes):
+            pr = multiprocessing.Process(
+                target=self.reproduce_process,
+                args=(w, split[process_id], finished, process_id)
+            )
+            processes.append(pr)
+            pr.start()
+
+        for process in processes:
+            process.join()
+
+        if any(finished):
+            return next(result for result in finished if result is not None)
+
+        return None
+
+
+    def reproduce_process(
+            self,
+            w: list[bytes],
+            indices: list[int],
+            finished,
+            process_id: int
+    ) -> None:
+        '''
+        TODO
+        '''
+        update = 0
+
+        for index in indices:
+            pad = hmac.digest(key=w[index], msg=self.h[index], digest=sha3_384)
+            msg = xor_bytes(self.ctxt[index], pad)
+
+            # Test for validity
+            if msg[:self.t] == self.zeros:
+                # Leading t bits are zeros
+                R = msg[self.t:(self.t + self.xi)]
+                R_1 = msg[(self.t + self.xi):]
+
+                tag = hmac.digest(key=R_1, msg=b''.join(self.ctxt), digest=sha3_384)
+
+                if tag == self.tag:
+                    finished[process_id] = R
+                    return
+
+                update += 1
+                if update >= 100:
+                    if not any(finished):
+                        update = 0
+                    else:
+                        return
+
+
+
 def main(num_rep, locker_num):
     '''
     Simulates the Fuzzy Extractor with APUF-based samples.
@@ -187,7 +256,8 @@ def main(num_rep, locker_num):
         ]
 
         t = time.perf_counter()
-        key_ = fe.reproduce(user_sample)
+        key_ = fe.reproduce_multithreaded(user_sample, num_processes=12)
+        # key_ = fe.reproduce(user_sample)
         t1 = time.perf_counter()
 
         # print(f"Rep took {t1-t} seconds")
@@ -208,5 +278,6 @@ def main(num_rep, locker_num):
 
 
 if __name__ == "__main__":
-    for _ in range(50):
-        main(50, 3500)
+    # for _ in range(15):
+    #     main(15, 3500)
+    main(1, 5000)
