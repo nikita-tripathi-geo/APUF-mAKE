@@ -1,4 +1,5 @@
 from sys import byteorder
+import numpy as np
 
 def xor_bytes(a: bytes, b: bytes) -> bytes:
     '''
@@ -41,6 +42,23 @@ def xor_bytes(a: bytes, b: bytes) -> bytes:
     int_xor = int_a ^ int_b
 
     return int_xor.to_bytes(max(len(a), len(b)), byteorder)
+
+
+def bitarray_to_bytes(array: np.ndarray) -> bytes:
+    '''TODO document
+    Idea to convert from ndarray to int taken from https://stackoverflow.com/a/41069967
+
+    '''
+
+    # slice array into 32-bit chunks
+    slices = np.array_split(array, array.size//8)
+
+    # process each slice
+    result = []
+    for s in slices:
+        result.append( s.dot(1 << np.arange(s.size)[::-1]) )
+
+    return bytes(result)
 
 
 if __name__ == "__main__":

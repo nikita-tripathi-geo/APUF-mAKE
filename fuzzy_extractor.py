@@ -8,7 +8,7 @@ from hashlib import sha3_384, sha384
 import time
 
 import numpy as np
-from utilities import xor_bytes
+from utilities import xor_bytes, bitarray_to_bytes
 from apuf_simulation import generate_n_APUFs, get_noisy_responses
 
 # Developed for Python 3.12.6
@@ -70,13 +70,15 @@ class FuzzyExtractor:
         self.msg_len = self.xi + self.lbd + self.t
 
         # hashing algorithm
-        # self.hash = sha384
+        # self.digest = sha384
+        self.digest = sha3_384
 
         # Generating a CRS: \ell nonces of length `nonce_len`
         self.h = [token_bytes(self.nonce_len) for _ in range(self.ell)]
 
         # Pre-define ciphertext list and tag
         self.ctxt = [bytes(0) for _ in range(self.ell)]
+        self.joint_ctxt = bytes(0)
         self.tag = bytes(0)
 
         # Pre-compute zero string for faster comparison
@@ -99,21 +101,24 @@ class FuzzyExtractor:
 
 
         # Generate keys from OS randomness
-        R = token_bytes(self.xi)
-        R_1 = token_bytes(self.lbd)
+        key = token_bytes(self.xi)
+        tag_key = token_bytes(self.lbd)
 
         # Construct message
-        msg = self.zeros + R + R_1
+        msg = self.zeros + key + tag_key
 
         # Begin locking with samples w_i
         for i in range(self.ell):
-            pad = hmac.digest(key=w[i], msg=self.h[i], digest=sha3_384)
+            pad = hmac.digest(key=w[i], msg=self.h[i], digest=self.digest)
             self.ctxt[i] = xor_bytes(msg, pad)
 
-        # Calculate tag
-        self.tag = hmac.digest(key=R_1, msg=b''.join(self.ctxt), digest=sha3_384)
+        # Join ciphertexts
+        self.joint_ctxt = b''.join(self.ctxt)
 
-        return R
+        # Calculate tag
+        self.tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=self.digest)
+
+        return key
 
 
     def reproduce(
@@ -131,19 +136,19 @@ class FuzzyExtractor:
         '''
         # Begin opening locks
         for i in range(self.ell):
-            pad_ = hmac.digest(key=w_[i], msg=self.h[i], digest=sha3_384)
+            pad_ = hmac.digest(key=w_[i], msg=self.h[i], digest=self.digest)
             msg_ = xor_bytes(self.ctxt[i], pad_)
 
             # Test for validity
             if msg_[:self.t] == self.zeros:
                 # Leading t bits are zeros
-                R = msg_[self.t:(self.t + self.xi)]
-                R_1 = msg_[(self.t + self.xi):]
+                key = msg_[self.t:(self.t + self.xi)]
+                tag_key = msg_[(self.t + self.xi):]
 
-                tag = hmac.digest(key=R_1, msg=b''.join(self.ctxt), digest=sha3_384)
+                tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=self.digest)
 
                 if tag == self.tag:
-                    return R
+                    return key
 
         return None
 
@@ -193,23 +198,23 @@ class FuzzyExtractor:
         update = 0
 
         for index in indices:
-            pad = hmac.digest(key=w[index], msg=self.h[index], digest=sha3_384)
+            pad = hmac.digest(key=w[index], msg=self.h[index], digest=self.digest)
             msg = xor_bytes(self.ctxt[index], pad)
 
             # Test for validity
             if msg[:self.t] == self.zeros:
                 # Leading t bits are zeros
-                R = msg[self.t:(self.t + self.xi)]
-                R_1 = msg[(self.t + self.xi):]
+                key = msg[self.t:(self.t + self.xi)]
+                tag_key = msg[(self.t + self.xi):]
 
-                tag = hmac.digest(key=R_1, msg=b''.join(self.ctxt), digest=sha3_384)
+                tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=self.digest)
 
                 if tag == self.tag:
-                    finished[process_id] = R
+                    finished[process_id] = key
                     return
 
                 update += 1
-                if update >= 100:
+                if update >= 50:
                     if not any(finished):
                         update = 0
                     else:
@@ -226,16 +231,20 @@ def main(num_rep, locker_num):
         LOCKER_NUM (int): Number of lockers used in Fuzzy Extractor.
     '''
 
-    APUF = generate_n_APUFs(1, 129, weight_mean=0, weight_stdev=0.05)
-    APUF_adversary = generate_n_APUFs(1, 129, weight_mean=0, weight_stdev=0.05)
-    challenges = np.load("./5000_challenges.npy")[:locker_num]
+    # Simulate Arbiter PUFs
+    apuf = generate_n_APUFs(1, 129, weight_mean=0, weight_stdev=0.05)
+    # apuf_adversary = generate_n_APUFs(1, 129, weight_mean=0, weight_stdev=0.05)
+
+    # Load challenges
+    challenges = np.load("challenges/5000_challenges.npy")[:locker_num]
 
 
     fe = FuzzyExtractor()
 
     # Server obtains sample W
     server_sample = [
-        bytes(get_noisy_responses(1, [APUF], c, 0, 0.05*0.1 )) for c in challenges
+        get_noisy_responses(1, [apuf], chall, 0, 0.05*0.1)
+        for chall in challenges
     ]
 
     # Server runs Gen(W) to obtain a session key and helper data
@@ -249,35 +258,30 @@ def main(num_rep, locker_num):
     rep_times = []
     match_num = 0
 
-    for usr_attempt in range(num_rep):
+    for _ in range(num_rep):
         # User obtains a fresh sample W'
         user_sample = [
-            bytes(get_noisy_responses(1, [APUF], c, 0, 0.05*0.1 )) for c in challenges
+            get_noisy_responses(1, [apuf], chal, 0, 0.05*0.1)
+            for chal in challenges
         ]
 
         t = time.perf_counter()
-        key_ = fe.reproduce_multithreaded(user_sample, num_processes=12)
-        # key_ = fe.reproduce(user_sample)
+        key_ = fe.reproduce(user_sample)
+        # key_ = fe.reproduce_multithreaded(user_sample, num_processes=10)
         t1 = time.perf_counter()
 
-        # print(f"Rep took {t1-t} seconds")
-        # print(f"Key = {key_}")
 
         rep_times.append(t1 - t)
-        # print(
-        #     f"Attempt id: {usr_attempt}",
-        #     "Session keys match!" if key == key_ else "Session key mismatch"
-        # )
         if key == key_:
             match_num += 1
 
 
-    print(np.mean(rep_times))
-    print(match_num)
+    print(f'On average, `reproduction` took {np.mean(rep_times)} seconds')
+    print(f'Correctly recovered key {match_num}/{num_rep} times')
 
 
 
 if __name__ == "__main__":
     # for _ in range(15):
     #     main(15, 3500)
-    main(1, 5000)
+    main(10, 3500)

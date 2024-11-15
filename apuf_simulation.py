@@ -103,10 +103,11 @@ def generate_k_n_challenges(k:int, n:int, chal_length: int, seed : int = None):
 
 # def generate_n
 
-def determine_response(delay: float) -> int:
-    if delay > 0:
-        return 1
-    return 0
+def determine_response(delay: float) -> np.int8:
+    return np.int8(1) if delay > 0 else np.int8(0)
+    # if delay > 0:
+    #     return 1
+    # return 0
 
 determine_response_vectorized = np.vectorize(determine_response)
 
