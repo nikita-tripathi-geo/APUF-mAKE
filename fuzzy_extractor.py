@@ -2,13 +2,14 @@
 
 # IMPORTS
 from secrets import token_bytes
+from operator import itemgetter
 import multiprocessing
 import hmac
-from hashlib import sha3_384, sha384
+from hashlib import sha3_384, sha384, sha256
 import time
 
 import numpy as np
-from utilities import xor_bytes, bitarray_to_bytes
+from utilities import xor_bytes
 from apuf_simulation import generate_n_APUFs, get_noisy_responses
 
 # Developed for Python 3.12.6
@@ -43,7 +44,7 @@ class FuzzyExtractor:
             mac_key_len: int = 128,
             padding_len: int = 128,
             nonce_len: int = 64,
-            seed: int = None
+            # seed: int = None
     ) -> None:
         '''
         Initializes the Fuzzy Extractor with given parameters.
@@ -73,27 +74,28 @@ class FuzzyExtractor:
         # self.digest = sha384
         self.digest = sha3_384
 
-        # Generating a CRS: \ell nonces of length `nonce_len`
-        self.h = [token_bytes(self.nonce_len) for _ in range(self.ell)]
-
-        # Pre-define ciphertext list and tag
+        # Pre-define variables
         self.ctxt = [bytes(0) for _ in range(self.ell)]
         self.joint_ctxt = bytes(0)
         self.tag = bytes(0)
+        self.h = []
+        self.positions = None
 
         # Pre-compute zero string for faster comparison
         self.zeros = bytes([0]*self.t)
 
 
+
+
     def generate(
             self,
-            w: list[bytes]
+            w: bytes
     ) -> bytes:
         '''
         Generates a cryptographic key and encodes it using noisy samples.
         
         Args:
-            w (list[bytes]): List of samples used to encode the key.
+            w (bytes): A large sample used to encode the key.
         
         Returns:
             bytes: Generated cryptographic key.
@@ -107,16 +109,27 @@ class FuzzyExtractor:
         # Construct message
         msg = self.zeros + key + tag_key
 
+        # Generate \ell nonces of length `nonce_len`
+        self.h = [token_bytes(self.nonce_len) for _ in range(self.ell)]
+
+        # Generate \ell subsample positions
+        self.positions = np.random.choice(len(w), (self.ell, self.m), replace=True)
+
         # Begin locking with samples w_i
         for i in range(self.ell):
-            pad = hmac.digest(key=w[i], msg=self.h[i], digest=self.digest)
+            # Construct a subsample
+            w_i = bytes(itemgetter(*self.positions[i])(w))
+            # Make uniform using HMAC
+            pad = hmac.digest(key=w_i, msg=self.h[i], digest=self.digest)
+            # One Time Pad
             self.ctxt[i] = xor_bytes(msg, pad)
 
         # Join ciphertexts
         self.joint_ctxt = b''.join(self.ctxt)
 
         # Calculate tag
-        self.tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=self.digest)
+        # self.tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=self.digest)
+        self.tag = sha256(self.joint_ctxt).digest()
 
         return key
 
@@ -136,7 +149,11 @@ class FuzzyExtractor:
         '''
         # Begin opening locks
         for i in range(self.ell):
-            pad_ = hmac.digest(key=w_[i], msg=self.h[i], digest=self.digest)
+            # Construct a subsample
+            w_i = bytes(itemgetter(*self.positions[i])(w_))
+            # Attempt to recreate the pad
+            pad_ = hmac.digest(key=w_i, msg=self.h[i], digest=self.digest)
+            # One Time Pad decrypt
             msg_ = xor_bytes(self.ctxt[i], pad_)
 
             # Test for validity
@@ -145,7 +162,8 @@ class FuzzyExtractor:
                 key = msg_[self.t:(self.t + self.xi)]
                 tag_key = msg_[(self.t + self.xi):]
 
-                tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=self.digest)
+                # tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=self.digest)
+                tag = sha256(self.joint_ctxt).digest()
 
                 if tag == self.tag:
                     return key
@@ -236,34 +254,33 @@ def main(num_rep, locker_num):
     # apuf_adversary = generate_n_APUFs(1, 129, weight_mean=0, weight_stdev=0.05)
 
     # Load challenges
-    challenges = np.load("challenges/5000_challenges.npy")[:locker_num]
+    challenges = np.load("challenges/1_mil_challenges.npy")
 
 
     fe = FuzzyExtractor()
 
+
+    t = time.perf_counter()
     # Server obtains sample W
-    server_sample = [
-        get_noisy_responses(1, [apuf], chall, 0, 0.05*0.1)
-        for chall in challenges
-    ]
+    server_sample = bytes(get_noisy_responses(1, [apuf], challenges, 0, 0.05*0.1))
+    t1 = time.perf_counter()
+    print(f"Reading W took {t1-t} seconds")
 
     # Server runs Gen(W) to obtain a session key and helper data
     t = time.perf_counter()
     key = fe.generate(server_sample)
     t1 = time.perf_counter()
+    print(f"Gen took {t1-t} seconds")
 
-    # print(f"Gen took {t1-t} seconds")
-    # print(f"Key = {key}")
+    print(f"Key = {key}")
 
     rep_times = []
     match_num = 0
 
     for _ in range(num_rep):
         # User obtains a fresh sample W'
-        user_sample = [
-            get_noisy_responses(1, [apuf], chal, 0, 0.05*0.1)
-            for chal in challenges
-        ]
+        user_sample = bytes(get_noisy_responses(1, [apuf], challenges, 0, 0.05*0.1))
+
 
         t = time.perf_counter()
         key_ = fe.reproduce(user_sample)
@@ -279,6 +296,7 @@ def main(num_rep, locker_num):
     print(f'On average, `reproduction` took {np.mean(rep_times)} seconds')
     print(f'Correctly recovered key {match_num}/{num_rep} times')
 
+    return
 
 
 if __name__ == "__main__":
