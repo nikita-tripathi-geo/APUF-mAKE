@@ -128,8 +128,8 @@ class FuzzyExtractor:
         self.joint_ctxt = b''.join(self.ctxt)
 
         # Calculate tag
-        # self.tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=self.digest)
-        self.tag = sha256(self.joint_ctxt).digest()
+        self.tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=sha256)
+        # self.tag = sha256(self.joint_ctxt).digest()
 
         return key
 
@@ -162,8 +162,8 @@ class FuzzyExtractor:
                 key = msg_[self.t:(self.t + self.xi)]
                 tag_key = msg_[(self.t + self.xi):]
 
-                # tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=self.digest)
-                tag = sha256(self.joint_ctxt).digest()
+                tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=sha256)
+                # tag = sha256(self.joint_ctxt).digest()
 
                 if tag == self.tag:
                     return key
@@ -302,4 +302,4 @@ def main(num_rep, locker_num):
 if __name__ == "__main__":
     # for _ in range(15):
     #     main(15, 3500)
-    main(10, 3500)
+    main(50, 3500)
