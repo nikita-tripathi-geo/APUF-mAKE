@@ -1,0 +1,26 @@
+2025-01-25 13:52:16,530 - INFO - Starting Fuzzy Extractor experiments...
+2025-01-25 13:52:16,530 - INFO - Generating Arbiter PUFs...
+2025-01-25 13:52:16,746 - INFO - Challenges loaded successfully.
+2025-01-25 13:52:16,746 - INFO - FuzzyExtractor initialized with 3500 lockers.
+2025-01-25 13:52:17,114 - INFO - Reading W took 0.3681 seconds.
+2025-01-25 13:52:17,167 - INFO - Gen took 0.0517 seconds.
+2025-01-25 13:52:17,167 - DEBUG - Generated key: b'\xc8T\xd6\xad\xbb>e\xe3\x96\xa7\xbb\x99\xcd\xe7\x13\x7f'
+2025-01-25 13:52:17,167 - INFO - Running Rep 50 times
+2025-01-25 13:52:36,237 - INFO - On average, reproduction took 0.0391 seconds.
+2025-01-25 13:52:36,237 - INFO - Correctly recovered key 15/50 times.
+2025-01-25 13:52:36,267 - INFO - Experiments complete.
+2025-01-25 13:52:36,267 - INFO - ====================
+
+2025-01-25 13:53:05,765 - INFO - Starting Fuzzy Extractor experiments...
+2025-01-25 13:53:05,766 - INFO - Generating Arbiter PUFs...
+2025-01-25 13:53:05,941 - INFO - Challenges loaded successfully.
+2025-01-25 13:53:05,941 - INFO - FuzzyExtractor initialized with 3500 lockers.
+2025-01-25 13:53:06,325 - INFO - Reading W took 0.3841 seconds.
+2025-01-25 13:53:06,378 - INFO - Gen took 0.0522 seconds.
+2025-01-25 13:53:06,378 - DEBUG - Generated key: b'\xc1JL\x0eL\r\x9d\xa8OI\xda\x00;\xb7\xb0|'
+2025-01-25 13:53:06,378 - INFO - Running Rep 50 times
+2025-01-25 13:53:26,065 - INFO - On average, reproduction took 0.0295 seconds.
+2025-01-25 13:53:26,065 - INFO - Correctly recovered key 36/50 times.
+2025-01-25 13:53:26,087 - INFO - Experiments complete.
+2025-01-25 13:53:26,087 - INFO - ====================
+

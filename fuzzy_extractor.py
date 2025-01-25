@@ -1,19 +1,77 @@
 #!/usr/bin/python3
+"""Robustly Reusable Fuzzy Extractor for noisy sources, such as APUF responses.
+
+The Fuzzy Extractor ensures robust cryptographic key generation even when the input data is
+noisy. It supports multithreaded reproduction attempts to enhance performance with large ell.
+
+Classes:
+    FuzzyExtractor: A class for key encoding and recovery using noisy samples.
+
+Functions:
+    main(num_rep: int, locker_num: int) -> None:
+        Simulates the Fuzzy Extractor workflow using Arbiter PUF-based samples.
+
+Dependencies:
+    - numpy: To read pre-generated challenges.
+    - apuf_simulation: Simulates Arbiter PUFs and generates noisy responses.
+    - utilities.xor_bytes: Utility function for XOR operations.
+
+Example:
+
+    ```python
+    from fuzzy_extractor import FuzzyExtractor
+    from apuf_simulation import generate_n_APUFs, get_noisy_responses
+    import numpy as np
+
+    # Generate Arbiter PUF samples
+    apuf = generate_n_APUFs(1, 129, weight_mean=0, weight_stdev=0.05)
+    challenges = np.load("challenges/1_mil_challenges.npy")
+
+    # Initialize Fuzzy Extractor
+    fe = FuzzyExtractor()
+
+    # Generate and reproduce a key
+    server_sample = bytes(get_noisy_responses(1, [apuf], challenges, 0, 0.05 * 0.1))
+    key = fe.generate(server_sample)
+    user_sample = bytes(get_noisy_responses(1, [apuf], challenges, 0, 0.05 * 0.1))
+    recovered_key = fe.reproduce(user_sample)
+
+    assert key == recovered_key
+    ```
+
+Attributes:
+    None. This module does not define global-level attributes.
+
+Notes:
+    - This implementation assumes Python 3.12.6+
+    - Some methods (`reproduce_multithreaded` and `reproduce_process`) are marked as TODO 
+      and require further refinement.
+
+"""
 
 # IMPORTS
 from secrets import token_bytes
 from operator import itemgetter
 import multiprocessing
 import hmac
-from hashlib import sha3_384, sha384, sha256
+from hashlib import sha384, sha256
+
+import logging
 import time
 
 import numpy as np
 from utilities import xor_bytes
 from apuf_simulation import generate_n_APUFs, get_noisy_responses
 
-# Developed for Python 3.12.6
-
+# Configure logging to output to both console and a file
+logging.basicConfig(
+    level=logging.DEBUG,  # Change to DEBUG for more detailed logs
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler("fuzzy_extractor.log", mode="a"),  # Log file
+        # logging.StreamHandler()  # Console output
+    ]
+)
 
 class FuzzyExtractor:
     '''
@@ -71,8 +129,7 @@ class FuzzyExtractor:
         self.msg_len = self.xi + self.lbd + self.t
 
         # hashing algorithm
-        # self.digest = sha384
-        self.digest = sha3_384
+        self.digest = sha384
 
         # Pre-define variables
         self.ctxt = [bytes(0) for _ in range(self.ell)]
@@ -84,6 +141,7 @@ class FuzzyExtractor:
         # Pre-compute zero string for faster comparison
         self.zeros = bytes([0]*self.t)
 
+        logging.info("FuzzyExtractor initialized with %d lockers.", self.ell)
 
 
 
@@ -127,9 +185,9 @@ class FuzzyExtractor:
         # Join ciphertexts
         self.joint_ctxt = b''.join(self.ctxt)
 
-        # Calculate tag
-        self.tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=sha256)
-        # self.tag = sha256(self.joint_ctxt).digest()
+        # Calculate tag TODO add seed
+        self.tag = sha256(self.joint_ctxt + tag_key).digest()
+        # self.tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=sha256)
 
         return key
 
@@ -162,8 +220,8 @@ class FuzzyExtractor:
                 key = msg_[self.t:(self.t + self.xi)]
                 tag_key = msg_[(self.t + self.xi):]
 
-                tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=sha256)
-                # tag = sha256(self.joint_ctxt).digest()
+                # tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=sha256)
+                tag = sha256(self.joint_ctxt + tag_key).digest()
 
                 if tag == self.tag:
                     return key
@@ -250,33 +308,39 @@ def main(num_rep, locker_num):
     '''
 
     # Simulate Arbiter PUFs
+    logging.info("Generating Arbiter PUFs...")
     apuf = generate_n_APUFs(1, 129, weight_mean=0, weight_stdev=0.05)
     # apuf_adversary = generate_n_APUFs(1, 129, weight_mean=0, weight_stdev=0.05)
 
     # Load challenges
-    challenges = np.load("challenges/1_mil_challenges.npy")
+    try:
+        challenges = np.load("challenges/1_mil_challenges.npy")
+        logging.info("Challenges loaded successfully.")
+    except FileNotFoundError:
+        logging.error("Challenge file not found. Ensure the path is correct.")
+        raise
 
 
-    fe = FuzzyExtractor()
+    fe = FuzzyExtractor(locker_num=locker_num)
 
-
-    t = time.perf_counter()
     # Server obtains sample W
+    t = time.perf_counter()
     server_sample = bytes(get_noisy_responses(1, [apuf], challenges, 0, 0.05*0.1))
     t1 = time.perf_counter()
-    print(f"Reading W took {t1-t} seconds")
+    logging.info("Reading W took %.4f seconds.", t1 - t)
 
     # Server runs Gen(W) to obtain a session key and helper data
     t = time.perf_counter()
     key = fe.generate(server_sample)
     t1 = time.perf_counter()
-    print(f"Gen took {t1-t} seconds")
+    logging.info("Gen took %.4f seconds.", t1 - t)
+    logging.debug("Generated key: %s", key)
 
-    print(f"Key = {key}")
 
     rep_times = []
     match_num = 0
 
+    logging.info("Running Rep %d times", num_rep)
     for _ in range(num_rep):
         # User obtains a fresh sample W'
         user_sample = bytes(get_noisy_responses(1, [apuf], challenges, 0, 0.05*0.1))
@@ -284,7 +348,6 @@ def main(num_rep, locker_num):
 
         t = time.perf_counter()
         key_ = fe.reproduce(user_sample)
-        # key_ = fe.reproduce_multithreaded(user_sample, num_processes=10)
         t1 = time.perf_counter()
 
 
@@ -293,13 +356,14 @@ def main(num_rep, locker_num):
             match_num += 1
 
 
-    print(f'On average, `reproduction` took {np.mean(rep_times)} seconds')
-    print(f'Correctly recovered key {match_num}/{num_rep} times')
+    logging.info("On average, reproduction took %.4f seconds.", np.mean(rep_times))
+    logging.info("Correctly recovered key %d/%d times.", match_num, num_rep)
 
     return
 
 
 if __name__ == "__main__":
-    # for _ in range(15):
-    #     main(15, 3500)
+    logging.info("Starting Fuzzy Extractor experiments...")
     main(50, 3500)
+    logging.info("Experiments complete.")
+    logging.info("====================\n")
