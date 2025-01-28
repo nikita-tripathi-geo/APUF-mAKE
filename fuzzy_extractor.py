@@ -70,16 +70,17 @@ logging.basicConfig(
     handlers=[
         logging.FileHandler("fuzzy_extractor.log", mode="a"),  # Log file
         # logging.StreamHandler()  # Console output
-    ]
+    ],
 )
 
+
 class FuzzyExtractor:
-    '''
+    """
     Implements a Fuzzy Extractor for key encoding and recovery using noisy data.
-    
+
     This class allows generation of a cryptographic key using noisy samples,
     and can reproduce the key using a "fresh" samples that close to the original.
-    
+
     Attributes:
         m (int): Length of individual sample in bits.
         ell (int): Number of lockers.
@@ -92,21 +93,21 @@ class FuzzyExtractor:
         ctxt (list[bytes]): List of ciphertexts corresponding to each locker.
         tag (bytes): Authentication tag.
         zeros (bytes): Zero padding (for faster comparison).
-    '''
+    """
 
     def __init__(
-            self,
-            sample_len: int = 192,
-            locker_num: int = 3500,
-            key_len: int = 128,
-            mac_key_len: int = 128,
-            padding_len: int = 128,
-            nonce_len: int = 64,
-            # seed: int = None
+        self,
+        sample_len: int = 192,
+        locker_num: int = 3500,
+        key_len: int = 128,
+        mac_key_len: int = 128,
+        padding_len: int = 128,
+        nonce_len: int = 64,
+        # seed: int = None
     ) -> None:
-        '''
+        """
         Initializes the Fuzzy Extractor with given parameters.
-        
+
         Args:
             sample_len (int): Length of the input sample in bits.
             locker_num (int): Number of lockers.
@@ -115,7 +116,7 @@ class FuzzyExtractor:
             padding_len (int): Length of zero padding in bits.
             nonce_len (int): Length of nonce used for each locker in bytes.
             seed (int, optional): Seed for reproducibility (currently unused, TODO).
-        '''
+        """
 
         # System parameters
         self.m = sample_len
@@ -139,26 +140,20 @@ class FuzzyExtractor:
         self.positions = None
 
         # Pre-compute zero string for faster comparison
-        self.zeros = bytes([0]*self.t)
+        self.zeros = bytes([0] * self.t)
 
         logging.info("FuzzyExtractor initialized with %d lockers.", self.ell)
 
-
-
-    def generate(
-            self,
-            w: bytes
-    ) -> bytes:
-        '''
+    def generate(self, w: bytes) -> bytes:
+        """
         Generates a cryptographic key and encodes it using noisy samples.
-        
+
         Args:
             w (bytes): A large sample used to encode the key.
-        
+
         Returns:
             bytes: Generated cryptographic key.
-        '''
-
+        """
 
         # Generate keys from OS randomness
         key = token_bytes(self.xi)
@@ -183,7 +178,7 @@ class FuzzyExtractor:
             self.ctxt[i] = xor_bytes(msg, pad)
 
         # Join ciphertexts
-        self.joint_ctxt = b''.join(self.ctxt)
+        self.joint_ctxt = b"".join(self.ctxt)
 
         # Calculate tag TODO add seed
         self.tag = sha256(self.joint_ctxt + tag_key).digest()
@@ -191,20 +186,16 @@ class FuzzyExtractor:
 
         return key
 
-
-    def reproduce(
-            self,
-            w_: list[bytes]
-    ) -> bytes:
-        '''
+    def reproduce(self, w_: list[bytes]) -> bytes:
+        """
         Attempts to recover the cryptographic key using noisy samples.
-        
+
         Args:
             w_ (list[bytes]): List of samples used to recover the key.
-        
+
         Returns:
             bytes: The reproduced key if successful; None otherwise.
-        '''
+        """
         # Begin opening locks
         for i in range(self.ell):
             # Construct a subsample
@@ -215,10 +206,10 @@ class FuzzyExtractor:
             msg_ = xor_bytes(self.ctxt[i], pad_)
 
             # Test for validity
-            if msg_[:self.t] == self.zeros:
+            if msg_[: self.t] == self.zeros:
                 # Leading t bits are zeros
-                key = msg_[self.t:(self.t + self.xi)]
-                tag_key = msg_[(self.t + self.xi):]
+                key = msg_[self.t : (self.t + self.xi)]
+                tag_key = msg_[(self.t + self.xi) :]
 
                 # tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=sha256)
                 tag = sha256(self.joint_ctxt + tag_key).digest()
@@ -228,17 +219,12 @@ class FuzzyExtractor:
 
         return None
 
-
-    def reproduce_multithreaded(
-            self,
-            w: list[bytes],
-            num_processes: int = 1
-    ) -> bytes:
-        '''
+    def reproduce_multithreaded(self, w: list[bytes], num_processes: int = 1) -> bytes:
+        """
         TODO
-        '''
+        """
 
-        finished = multiprocessing.Array('b', False)
+        finished = multiprocessing.Array("b", False)
         split = np.array_split(list(range(self.ell)), num_processes)
         finished = multiprocessing.Manager().list([None for _ in range(num_processes)])
 
@@ -247,7 +233,7 @@ class FuzzyExtractor:
         for process_id in range(num_processes):
             pr = multiprocessing.Process(
                 target=self.reproduce_process,
-                args=(w, split[process_id], finished, process_id)
+                args=(w, split[process_id], finished, process_id),
             )
             processes.append(pr)
             pr.start()
@@ -260,17 +246,12 @@ class FuzzyExtractor:
 
         return None
 
-
     def reproduce_process(
-            self,
-            w: list[bytes],
-            indices: list[int],
-            finished,
-            process_id: int
+        self, w: list[bytes], indices: list[int], finished, process_id: int
     ) -> None:
-        '''
+        """
         TODO
-        '''
+        """
         update = 0
 
         for index in indices:
@@ -278,10 +259,10 @@ class FuzzyExtractor:
             msg = xor_bytes(self.ctxt[index], pad)
 
             # Test for validity
-            if msg[:self.t] == self.zeros:
+            if msg[: self.t] == self.zeros:
                 # Leading t bits are zeros
-                key = msg[self.t:(self.t + self.xi)]
-                tag_key = msg[(self.t + self.xi):]
+                key = msg[self.t : (self.t + self.xi)]
+                tag_key = msg[(self.t + self.xi) :]
 
                 tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=self.digest)
 
@@ -297,15 +278,14 @@ class FuzzyExtractor:
                         return
 
 
-
 def main(num_rep, locker_num):
-    '''
+    """
     Simulates the Fuzzy Extractor with APUF-based samples.
-    
+
     Args:
         num_rep (int): Number of reproduction attempts.
         LOCKER_NUM (int): Number of lockers used in Fuzzy Extractor.
-    '''
+    """
 
     # Simulate Arbiter PUFs
     logging.info("Generating Arbiter PUFs...")
@@ -320,12 +300,11 @@ def main(num_rep, locker_num):
         logging.error("Challenge file not found. Ensure the path is correct.")
         raise
 
-
     fe = FuzzyExtractor(locker_num=locker_num)
 
     # Server obtains sample W
     t = time.perf_counter()
-    server_sample = bytes(get_noisy_responses(1, [apuf], challenges, 0, 0.05*0.1))
+    server_sample = bytes(get_noisy_responses(1, [apuf], challenges, 0, 0.05 * 0.1))
     t1 = time.perf_counter()
     logging.info("Reading W took %.4f seconds.", t1 - t)
 
@@ -336,25 +315,21 @@ def main(num_rep, locker_num):
     logging.info("Gen took %.4f seconds.", t1 - t)
     logging.debug("Generated key: %s", key)
 
-
     rep_times = []
     match_num = 0
 
     logging.info("Running Rep %d times", num_rep)
     for _ in range(num_rep):
         # User obtains a fresh sample W'
-        user_sample = bytes(get_noisy_responses(1, [apuf], challenges, 0, 0.05*0.1))
-
+        user_sample = bytes(get_noisy_responses(1, [apuf], challenges, 0, 0.05 * 0.1))
 
         t = time.perf_counter()
         key_ = fe.reproduce(user_sample)
         t1 = time.perf_counter()
 
-
         rep_times.append(t1 - t)
         if key == key_:
             match_num += 1
-
 
     logging.info("On average, reproduction took %.4f seconds.", np.mean(rep_times))
     logging.info("Correctly recovered key %d/%d times.", match_num, num_rep)
