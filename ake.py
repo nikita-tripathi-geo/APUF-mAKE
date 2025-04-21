@@ -24,9 +24,6 @@ class User:
         self.lockerdigest = LOCKER_DIGEST
         self.tagdigest = TAG_DIGEST
 
-        self.ctxtlen = self.lockerdigest.digest_size
-        self.taglen = self.tagdigest.digest_size
-
         # Simulate the user's APUF
         self.device = apuf.generate_n_APUFs(1, 129, weight_mean=0, weight_stdev=0.05)
 
@@ -68,8 +65,8 @@ class User:
             return None
 
         # Step 2: Wait to receive a P_sid, nonce1, and server's id
-        ctxt_size = self.L * self.ctxtlen
-        payload_size = ctxt_size + self.taglen
+        ctxt_size = self.L * self.lockerdigest.digest_size
+        payload_size = ctxt_size + self.tagdigest.digest_size
         # First, receive all those ciphertexts and tag. Parse appropriately (TODO may need to pad)
         received = receive(server, payload_size)
         if len(received) != payload_size:

@@ -357,13 +357,27 @@ def main(num_rep, locker_num):
 
 
     logging.info("On average, reproduction took %.4f seconds.", np.mean(rep_times))
-    logging.info("Correctly recovered key %d/%d times.", match_num, num_rep)
+    # logging.info("Correctly recovered key %d/%d times.", match_num, num_rep)
 
-    return
+    logging.info("Hashing to simulate AKE authentication")
+    t = time.perf_counter()
+
+    nonce = token_bytes(8) # 64 bit nonce
+    h1 = sha256(nonce + fe.joint_ctxt + b'user' + b'server' + key).digest()
+    h2 = sha256(nonce + fe.joint_ctxt + b'user' + b'server' + key).digest()
+
+    session_key = sha256(fe.joint_ctxt + b'user' + b'server' + key).digest()
+    t1 = time.perf_counter()
+    print(h1, h2, session_key)
+    logging.info("Generating hashes took %.4f seconds.", t1 - t)
+
+
+
+    return match_num
 
 
 if __name__ == "__main__":
     logging.info("Starting Fuzzy Extractor experiments...")
-    main(50, 3500)
+    logging.info("Total number of matches: %d/%d", sum(main(1, 3500) for i in range(50)), 50)
     logging.info("Experiments complete.")
     logging.info("====================\n")
