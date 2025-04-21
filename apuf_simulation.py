@@ -1,140 +1,143 @@
-import random
 import numpy as np
-import matplotlib.pyplot as plt
+import random
 
 
-def generate_n_APUFs(n: int, weight_length: int,
-    weight_mean: float = 0, weight_stdev: float = 1):
-    """_summary_
+def generate_n_APUFs(n: int, d: int,
+                    weight_mean: float = 0.0,
+                    weight_stdev: float = 0.05) -> np.ndarray:
+    """Generate weight vectors for `n` Arbiter PUFs.
+
+    Samples n weight vectors of length `d` from a normal distribution.
 
     Args:
-        n (int): _description_
-        weight_length (int): _description_
-        weight_mean (float, optional): _description_. Defaults to 0.
-        weight_stdev (float, optional): _description_. Defaults to 1.
+        n (int): Number of PUF instances to generate.
+        d (int): Dimension of each weight vector.
+        weight_mean (float): Mean of the normal distribution. Defaults to 0.0.
+        weight_stdev (float): Standard deviation of the normal distribution. Defaults to 0.05.
 
     Returns:
-        np.ndarray: _description_
+        np.ndarray: Array of shape (n, d) containing `n` weight vectors.
     """
-    ws = np.random.normal(loc=weight_mean, scale=weight_stdev, size=(n, weight_length))
+    ws = np.random.normal(loc=weight_mean, scale=weight_stdev, size=(n, d))
 
     return ws
 
 
-def generate_n_challenges(n:int, chal_length: int, seed : int = None):
-    """_summary_
+def generate_n_challenges(k: int, d: int, seed: int = None) -> np.ndarray:
+    """Generate phase vectors (phi) for a set of APUF challenges.
+
+    Each challenge is a binary vector of length `d`. This function
+    maps random challenges to delay-based phase vectors.
 
     Args:
-        n (int): _description_
-        chal_length (int): _description_
+        k (int): Number of challenges.
+        d (int): Length of each challenge (number of bits).
+        seed (int, optional): PRNG seed for reproducibility. Defaults to None.
 
     Returns:
-        np.ndarray: _description_
-
+        np.ndarray: A phase matrix phi of shape (d, k), where each
+            column corresponds to the transformed challenge.
     """
 
-    # chals = np.random.randint(0, 2, (chal_length, n))
-    if seed is not None:  # TODO: change later to "best practice" version
-        np.random.seed(seed)
+    # Generate binary challenges
+    if seed is not None:
+        rng = np.random.default_rng(seed=seed)
+        chals = rng.integers(0, 2, (k, d))
+    else:
+        chals = np.random.randint(0, 2, (k, d))
 
-    chals = np.random.randint(0, 2, (n, chal_length))
-
-    # chals = 1 - 2 * chals
+    # Map {0,1} -> {+1,-1}
     chals_prime = 1 - 2 * chals
 
-    phi = np.ones((n, chal_length))
+    # Convert to phi
+    phi = np.ones((k, d))
 
-    for chal in range(n):
-        for i in range(chal_length):
-            for j in range(i, chal_length):
+    for chal in range(k):
+        for i in range(d):
+            for j in range(i, d):
                 phi[chal][i] *= chals_prime[chal][j]
 
     phi = np.transpose(phi)
 
     # set last bit to 1 (last bit of psi has to be 1)
-    # chals[-1] = np.ones(n)
-    phi[-1] = np.ones(n)
+    phi[-1] = np.ones(k)
 
-    # return chals
     return phi
 
-def generate_k_n_challenges(k:int, n:int, chal_length: int, seed : int = None):
-    """_summary_
+
+def generate_k_n_challenges(x:int, k:int, d: int, seed : int = None):
+    """Generate `x` sequences of `k` random challenges.
 
     Args:
-        k (int): number of lockers
-        n (int): _description_
-        chal_length (int): _description_
+        x (int): Number of challenge sequences.
+        k (int): Number of challenges per sequence.
+        d (int): Length of each challenge.
+        seed (int, optional): PRNG seed for reproducibility. Defaults to None.
 
     Returns:
-        np.ndarray: _description_
-
+        np.ndarray: Array of shape (x, d, k) containing feature matrices
+            for each locker.
     """
 
-    # chals = np.random.randint(0, 2, (chal_length, n))
-    if seed is not None:  # TODO: change later to "best practice" version
-        np.random.seed(seed)
+    # Generate binary challenges
+    if seed is not None:
+        rng = np.random.default_rng(seed=seed)
+        chals = rng.integers(0, 2, (x, k, d))
+    else:
+        chals = np.random.randint(0, 2, (x, k, d))
 
-    chals = np.random.randint(0, 2, (k, n, chal_length))
-
-    # chals = 1 - 2 * chals
     chals_prime = 1 - 2 * chals
 
-    phi = np.ones((k, n, chal_length))
+    phi = np.ones((x, k, d))
 
-    for locker in range(k):
-        for chal in range(n):
-            for i in range(chal_length):
-                for j in range(i, chal_length):
+    for locker in range(x):
+        for chal in range(k):
+            for i in range(d):
+                for j in range(i, d):
                     phi[locker][chal][i] *= chals_prime[locker][chal][j]
 
     result = np.transpose(phi, (0, 2, 1))
-    for i in range(k):
-        # result[i]  = np.transpose(phi[i])
+    for i in range(x):
+        result[i][-1] = np.ones(k)
 
-        # set last bit to 1 (last bit of psi has to be 1)
-        # chals[-1] = np.ones(n)
-        result[i][-1] = np.ones(n)
-
-    # return chals
     return result
 
+def determine_response(delay: float) -> int:
+    """Threshold delay to obtain a response bit."""
+    if delay > 0:
+        return 1
+    return 0
 
-
-# def generate_n
-
-def determine_response(delay: float) -> np.int8:
-    return np.int8(1) if delay > 0 else np.int8(0)
-    # if delay > 0:
-    #     return 1
-    # return 0
-
+# Vectorized thresholding function. Works on float ndarrays.
 determine_response_vectorized = np.vectorize(determine_response)
 
-def get_responses(ws, ps):
-    """_summary_
+def get_responses(weights: np.ndarray,
+                  phis: np.ndarray) -> np.ndarray:
+    """Compute multi-bit response to a sequence of challenges.
 
     Args:
-        ws (_type_): _description_
-        ps (_type_): _description_
+        weights (np.ndarray): Weight vector of APUF.
+        phi (np.ndarray): Challenge (phase vector) sequence.
 
     Returns:
-        _type_: _description_
+        np.ndarray: Multi-bit binary response.
     """
-    return determine_response_vectorized(ws @ ps)
+    delays = weights @ phis
+    return determine_response_vectorized(delays)
 
 
 def norm_hamming_distances(responses: np.ndarray):
-    """_summary_
+    """Compute fractional Hamming distances between all pairs of responses.
+    TODO remove
 
     Args:
-        responses (np.ndarray): _description_
+        responses (np.ndarray): 2D binary array of shape (m, r), where m is number
+            of response vectors and r is their length.
 
     Returns:
-        list[float]: _description_
+        list[float]: List of normalized Hamming distances between each pair.
     """
     distances = []
-    print(responses)
 
     for i in range(len(responses)):
         for j in range(i+1, len(responses)):
@@ -145,17 +148,24 @@ def norm_hamming_distances(responses: np.ndarray):
     return distances
 
 
-def get_noisy_responses(
-    xor_num: int,
-    ws,  ps: np.ndarray,
-    noise_mean: float, noise_std: float) -> np.ndarray:
-    """
-    blablabla
-    """
+def get_noisy_responses(xor_num: int,
+                        ws: np.ndarray,
+                        ps: np.ndarray,
+                        noise_mean: float,
+                        noise_std: float) -> np.ndarray:
+    """Generate noisy APUF/XOR-PUF responses.
 
-    # responses = np.zeros(ps.shape, dtype=np.int64)
+    Args:
+        xor_num (int): Number of APUF instances in XOR-PUF. Use `1` if simulating APUF.
+        weights (np.ndarray): Weight vectors.
+        phi (np.ndarray): Sequence of challenges (phase vectors).
+        noise_mean (float): Mean of Gaussian noise.
+        noise_std (float): Standard deviation of Gaussian noise.
+
+    Returns:
+        np.ndarray: Binary response vector after noisy measurements.
+    """
     responses = []
-
 
     for i in range(xor_num):
 
@@ -166,6 +176,8 @@ def get_noisy_responses(
         responses.append( determine_response_vectorized(resp))
 
     resp = responses[0]
+
+    # Only if using XOR-PUF
     for i in range(1, xor_num):
         resp ^= responses[i]
 

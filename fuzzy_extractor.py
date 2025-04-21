@@ -144,6 +144,7 @@ class FuzzyExtractor:
 
         logging.info("FuzzyExtractor initialized with %d lockers.", self.ell)
 
+
     def generate(self, w: bytes) -> bytes:
         """
         Generates a cryptographic key and encodes it using noisy samples.
@@ -185,6 +186,7 @@ class FuzzyExtractor:
         # self.tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=sha256)
 
         return key
+
 
     def reproduce(self, w_: list[bytes]) -> bytes:
         """
