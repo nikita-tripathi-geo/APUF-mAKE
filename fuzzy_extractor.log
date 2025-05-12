@@ -1892,4 +1892,1012 @@
 2025-04-02 15:11:01,465 - INFO - Total number of matches: 18/50
 2025-04-02 15:11:01,465 - INFO - Experiments complete.
 2025-04-02 15:11:01,465 - INFO - ====================
+2025-05-11 22:58:27,345 - INFO - Starting Fuzzy Extractor experiments...
+2025-05-11 22:58:27,345 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:27,519 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:27,520 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:27,539 - INFO - Reading W took 0.0195 seconds.
+2025-05-11 22:58:27,580 - INFO - Gen took 0.0408 seconds.
+2025-05-11 22:58:27,580 - DEBUG - Generated key: b'^<\x85r\x83;\x08\x86t\xd5\xad\xd7\xe4/\x98y'
+2025-05-11 22:58:27,580 - INFO - Running Rep 1 times
+2025-05-11 22:58:27,626 - INFO - On average, Rep took 0.0331 seconds.
+2025-05-11 22:58:27,627 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:27,629 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:27,681 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:27,844 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:27,844 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:27,861 - INFO - Reading W took 0.0169 seconds.
+2025-05-11 22:58:27,900 - INFO - Gen took 0.0391 seconds.
+2025-05-11 22:58:27,900 - DEBUG - Generated key: b'\x82q\xc4N\xda\xe4),\xe0\xe2y\xa3P\xe2=v'
+2025-05-11 22:58:27,900 - INFO - Running Rep 1 times
+2025-05-11 22:58:27,947 - INFO - On average, Rep took 0.0340 seconds.
+2025-05-11 22:58:27,947 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:27,949 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:27,997 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:28,165 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:28,167 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:28,193 - INFO - Reading W took 0.0213 seconds.
+2025-05-11 22:58:28,233 - INFO - Gen took 0.0401 seconds.
+2025-05-11 22:58:28,233 - DEBUG - Generated key: b'\xce\xa6\x85\x0f\x0e\xaa\xfd\x07z\xd1[?5\x91\xfc\xcf'
+2025-05-11 22:58:28,233 - INFO - Running Rep 1 times
+2025-05-11 22:58:28,264 - INFO - On average, Rep took 0.0073 seconds.
+2025-05-11 22:58:28,264 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:28,266 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:28,321 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:28,491 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:28,491 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:28,509 - INFO - Reading W took 0.0175 seconds.
+2025-05-11 22:58:28,549 - INFO - Gen took 0.0401 seconds.
+2025-05-11 22:58:28,549 - DEBUG - Generated key: b'/\x832AQ\xb3\xf1\xc6K\xdan\x15\x7f2\x96\xa8'
+2025-05-11 22:58:28,549 - INFO - Running Rep 1 times
+2025-05-11 22:58:28,569 - INFO - On average, Rep took 0.0085 seconds.
+2025-05-11 22:58:28,569 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:28,571 - INFO - Generating hashes took 0.0019 seconds.
+2025-05-11 22:58:28,620 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:28,792 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:28,793 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:28,810 - INFO - Reading W took 0.0171 seconds.
+2025-05-11 22:58:28,850 - INFO - Gen took 0.0395 seconds.
+2025-05-11 22:58:28,850 - DEBUG - Generated key: b'\x00\xe4:M\x05\xd7\xc4wO}\x1c\xe8[\x18\x05\x9e'
+2025-05-11 22:58:28,850 - INFO - Running Rep 1 times
+2025-05-11 22:58:28,882 - INFO - On average, Rep took 0.0208 seconds.
+2025-05-11 22:58:28,882 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:28,884 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:28,933 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:29,110 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:29,110 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:29,127 - INFO - Reading W took 0.0168 seconds.
+2025-05-11 22:58:29,167 - INFO - Gen took 0.0394 seconds.
+2025-05-11 22:58:29,167 - DEBUG - Generated key: b'\xbb$\x92]{\x0b\x84;\xb8\xcf-\xafu\xb67\xfb'
+2025-05-11 22:58:29,167 - INFO - Running Rep 1 times
+2025-05-11 22:58:29,180 - INFO - On average, Rep took 0.0014 seconds.
+2025-05-11 22:58:29,180 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:29,182 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:29,231 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:29,404 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:29,404 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:29,422 - INFO - Reading W took 0.0180 seconds.
+2025-05-11 22:58:29,462 - INFO - Gen took 0.0400 seconds.
+2025-05-11 22:58:29,462 - DEBUG - Generated key: b"\x12u_Lw'\x9a\x1dF`\x84\x15\xa3cn\xfc"
+2025-05-11 22:58:29,462 - INFO - Running Rep 1 times
+2025-05-11 22:58:29,477 - INFO - On average, Rep took 0.0038 seconds.
+2025-05-11 22:58:29,478 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:29,479 - INFO - Generating hashes took 0.0019 seconds.
+2025-05-11 22:58:29,537 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:29,708 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:29,708 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:29,725 - INFO - Reading W took 0.0168 seconds.
+2025-05-11 22:58:29,765 - INFO - Gen took 0.0394 seconds.
+2025-05-11 22:58:29,765 - DEBUG - Generated key: b'd\x8e\xb8r\x95\x93]\xe4\xcbf\xc5A|\xc9\x8c\xaa'
+2025-05-11 22:58:29,765 - INFO - Running Rep 1 times
+2025-05-11 22:58:29,796 - INFO - On average, Rep took 0.0185 seconds.
+2025-05-11 22:58:29,796 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:29,798 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:29,847 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:30,014 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:30,014 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:30,031 - INFO - Reading W took 0.0168 seconds.
+2025-05-11 22:58:30,071 - INFO - Gen took 0.0397 seconds.
+2025-05-11 22:58:30,071 - DEBUG - Generated key: b'\x86\xa0z\xd7\x9e\xc1\xc00xgx\x16\xc8\xd8\xa4\x87'
+2025-05-11 22:58:30,071 - INFO - Running Rep 1 times
+2025-05-11 22:58:30,090 - INFO - On average, Rep took 0.0080 seconds.
+2025-05-11 22:58:30,090 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:30,092 - INFO - Generating hashes took 0.0019 seconds.
+2025-05-11 22:58:30,141 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:30,306 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:30,306 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:30,323 - INFO - Reading W took 0.0166 seconds.
+2025-05-11 22:58:30,363 - INFO - Gen took 0.0399 seconds.
+2025-05-11 22:58:30,363 - DEBUG - Generated key: b'}PS\xf9\x9e\x0eK\x97\xcd\x89\xc3{\x8b\xe6:n'
+2025-05-11 22:58:30,363 - INFO - Running Rep 1 times
+2025-05-11 22:58:30,408 - INFO - On average, Rep took 0.0335 seconds.
+2025-05-11 22:58:30,408 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:30,410 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:30,457 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:30,629 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:30,629 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:30,648 - INFO - Reading W took 0.0186 seconds.
+2025-05-11 22:58:30,688 - INFO - Gen took 0.0395 seconds.
+2025-05-11 22:58:30,688 - DEBUG - Generated key: b'\x1fFu.\xe6\xc0}\xcb\xde\x0b\x15\xa5\x8a\n-\xfe'
+2025-05-11 22:58:30,688 - INFO - Running Rep 1 times
+2025-05-11 22:58:30,702 - INFO - On average, Rep took 0.0028 seconds.
+2025-05-11 22:58:30,702 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:30,704 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:30,752 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:30,917 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:30,917 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:30,935 - INFO - Reading W took 0.0175 seconds.
+2025-05-11 22:58:30,974 - INFO - Gen took 0.0397 seconds.
+2025-05-11 22:58:30,974 - DEBUG - Generated key: b'g\x18\x88p\xda\xe1\xbcU\xb4\xa8wO\xd8\x11[L'
+2025-05-11 22:58:30,974 - INFO - Running Rep 1 times
+2025-05-11 22:58:31,021 - INFO - On average, Rep took 0.0335 seconds.
+2025-05-11 22:58:31,021 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:31,023 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:31,076 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:31,243 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:31,244 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:31,261 - INFO - Reading W took 0.0170 seconds.
+2025-05-11 22:58:31,301 - INFO - Gen took 0.0397 seconds.
+2025-05-11 22:58:31,301 - DEBUG - Generated key: b'\xd0\x948J\x83~"KG\x97\xf3\xc5m\x84\xa4\xf8'
+2025-05-11 22:58:31,301 - INFO - Running Rep 1 times
+2025-05-11 22:58:31,314 - INFO - On average, Rep took 0.0020 seconds.
+2025-05-11 22:58:31,314 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:31,316 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:31,363 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:31,528 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:31,529 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:31,546 - INFO - Reading W took 0.0171 seconds.
+2025-05-11 22:58:31,586 - INFO - Gen took 0.0404 seconds.
+2025-05-11 22:58:31,586 - DEBUG - Generated key: b"\x89>\xfa=\xa1\x88\xd2\xf6\xe4\x9f\x04'\xa6\xff\xd0P"
+2025-05-11 22:58:31,586 - INFO - Running Rep 1 times
+2025-05-11 22:58:31,631 - INFO - On average, Rep took 0.0337 seconds.
+2025-05-11 22:58:31,631 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:31,633 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:31,683 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:31,845 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:31,846 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:31,863 - INFO - Reading W took 0.0167 seconds.
+2025-05-11 22:58:31,902 - INFO - Gen took 0.0395 seconds.
+2025-05-11 22:58:31,902 - DEBUG - Generated key: b'\x9c\x9b\x16\xd0d\xd4\x16\x80\xf4UN\x8e\xe7TM\x0e'
+2025-05-11 22:58:31,902 - INFO - Running Rep 1 times
+2025-05-11 22:58:31,932 - INFO - On average, Rep took 0.0191 seconds.
+2025-05-11 22:58:31,932 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:31,934 - INFO - Generating hashes took 0.0019 seconds.
+2025-05-11 22:58:31,982 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:32,148 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:32,149 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:32,166 - INFO - Reading W took 0.0177 seconds.
+2025-05-11 22:58:32,206 - INFO - Gen took 0.0397 seconds.
+2025-05-11 22:58:32,206 - DEBUG - Generated key: b'\xe9\xabX\xe5Du"\x9bw\xd6&\xb2W\xf1\xf5\xeb'
+2025-05-11 22:58:32,206 - INFO - Running Rep 1 times
+2025-05-11 22:58:32,238 - INFO - On average, Rep took 0.0206 seconds.
+2025-05-11 22:58:32,238 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:32,240 - INFO - Generating hashes took 0.0019 seconds.
+2025-05-11 22:58:32,289 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:32,452 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:32,453 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:32,470 - INFO - Reading W took 0.0176 seconds.
+2025-05-11 22:58:32,511 - INFO - Gen took 0.0401 seconds.
+2025-05-11 22:58:32,511 - DEBUG - Generated key: b'A28x\x95\xfc\x8b\xc1B\xf3\x87\xac\xcfI\xba\xf0'
+2025-05-11 22:58:32,511 - INFO - Running Rep 1 times
+2025-05-11 22:58:32,546 - INFO - On average, Rep took 0.0238 seconds.
+2025-05-11 22:58:32,546 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:32,548 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:32,595 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:32,760 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:32,760 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:32,779 - INFO - Reading W took 0.0193 seconds.
+2025-05-11 22:58:32,819 - INFO - Gen took 0.0395 seconds.
+2025-05-11 22:58:32,819 - DEBUG - Generated key: b'\x9ef\x0f\xcf9\xddwR&TBln\xe3\xa9y'
+2025-05-11 22:58:32,819 - INFO - Running Rep 1 times
+2025-05-11 22:58:32,866 - INFO - On average, Rep took 0.0338 seconds.
+2025-05-11 22:58:32,866 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:32,868 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:32,919 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:33,089 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:33,089 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:33,107 - INFO - Reading W took 0.0185 seconds.
+2025-05-11 22:58:33,147 - INFO - Gen took 0.0395 seconds.
+2025-05-11 22:58:33,147 - DEBUG - Generated key: b'~Bx\x8e&\xeeE{6\xbc\x96\xf3\x15\x13]\x1c'
+2025-05-11 22:58:33,147 - INFO - Running Rep 1 times
+2025-05-11 22:58:33,160 - INFO - On average, Rep took 0.0021 seconds.
+2025-05-11 22:58:33,160 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:33,162 - INFO - Generating hashes took 0.0019 seconds.
+2025-05-11 22:58:33,211 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:33,382 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:33,383 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:33,400 - INFO - Reading W took 0.0171 seconds.
+2025-05-11 22:58:33,440 - INFO - Gen took 0.0398 seconds.
+2025-05-11 22:58:33,440 - DEBUG - Generated key: b'\xcfu\xcf\x9a?\x07\x01\xa3\x91\x90\x90\xf3<\xd4\x1aA'
+2025-05-11 22:58:33,440 - INFO - Running Rep 1 times
+2025-05-11 22:58:33,462 - INFO - On average, Rep took 0.0111 seconds.
+2025-05-11 22:58:33,463 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:33,465 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:33,512 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:33,686 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:33,687 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:33,712 - INFO - Reading W took 0.0251 seconds.
+2025-05-11 22:58:33,752 - INFO - Gen took 0.0396 seconds.
+2025-05-11 22:58:33,752 - DEBUG - Generated key: b'w.l\xb8\x9cxn\xe5\xf4\xcb\xff\xde\xd3c?\xe9'
+2025-05-11 22:58:33,752 - INFO - Running Rep 1 times
+2025-05-11 22:58:33,766 - INFO - On average, Rep took 0.0031 seconds.
+2025-05-11 22:58:33,767 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:33,769 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:33,821 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:33,988 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:33,989 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:34,006 - INFO - Reading W took 0.0175 seconds.
+2025-05-11 22:58:34,046 - INFO - Gen took 0.0395 seconds.
+2025-05-11 22:58:34,046 - DEBUG - Generated key: b'u\xc4\x86\xa4d\xc5\xa8\x1f\x96\x0e\xc8]\xdb=\xbf\x12'
+2025-05-11 22:58:34,046 - INFO - Running Rep 1 times
+2025-05-11 22:58:34,063 - INFO - On average, Rep took 0.0063 seconds.
+2025-05-11 22:58:34,064 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:34,066 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:34,114 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:34,282 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:34,282 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:34,300 - INFO - Reading W took 0.0174 seconds.
+2025-05-11 22:58:34,339 - INFO - Gen took 0.0391 seconds.
+2025-05-11 22:58:34,339 - DEBUG - Generated key: b'\xd5\xebU\xaeF\xce*,\xdd\x0c\xaa\x1c\x16\xa0OG'
+2025-05-11 22:58:34,339 - INFO - Running Rep 1 times
+2025-05-11 22:58:34,361 - INFO - On average, Rep took 0.0108 seconds.
+2025-05-11 22:58:34,361 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:34,363 - INFO - Generating hashes took 0.0019 seconds.
+2025-05-11 22:58:34,412 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:34,578 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:34,578 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:34,595 - INFO - Reading W took 0.0172 seconds.
+2025-05-11 22:58:34,635 - INFO - Gen took 0.0396 seconds.
+2025-05-11 22:58:34,635 - DEBUG - Generated key: b"\x15\x04\x0b\r\xdf\xa9'i%r]\x05R)\x89\xfa"
+2025-05-11 22:58:34,635 - INFO - Running Rep 1 times
+2025-05-11 22:58:34,649 - INFO - On average, Rep took 0.0014 seconds.
+2025-05-11 22:58:34,650 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:34,652 - INFO - Generating hashes took 0.0022 seconds.
+2025-05-11 22:58:34,703 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:34,880 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:34,880 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:34,907 - INFO - Reading W took 0.0266 seconds.
+2025-05-11 22:58:34,947 - INFO - Gen took 0.0399 seconds.
+2025-05-11 22:58:34,947 - DEBUG - Generated key: b'\xd3\x1e4,\xb1fO\xdc\xb2\x1a\xc8\x86l\x0cu\x90'
+2025-05-11 22:58:34,947 - INFO - Running Rep 1 times
+2025-05-11 22:58:34,963 - INFO - On average, Rep took 0.0043 seconds.
+2025-05-11 22:58:34,963 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:34,965 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:35,014 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:35,182 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:35,183 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:35,201 - INFO - Reading W took 0.0179 seconds.
+2025-05-11 22:58:35,240 - INFO - Gen took 0.0396 seconds.
+2025-05-11 22:58:35,240 - DEBUG - Generated key: b'\x91\xd1y\xab$\xd6x\x8a\x93%8\xda(0\xe17'
+2025-05-11 22:58:35,240 - INFO - Running Rep 1 times
+2025-05-11 22:58:35,255 - INFO - On average, Rep took 0.0028 seconds.
+2025-05-11 22:58:35,255 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:35,257 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:35,307 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:35,477 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:35,477 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:35,496 - INFO - Reading W took 0.0183 seconds.
+2025-05-11 22:58:35,535 - INFO - Gen took 0.0393 seconds.
+2025-05-11 22:58:35,535 - DEBUG - Generated key: b'E\x0e\x17,nv\x07*\xa7\x8e\xaa\x06\x13\x04\xd0\x82'
+2025-05-11 22:58:35,535 - INFO - Running Rep 1 times
+2025-05-11 22:58:35,555 - INFO - On average, Rep took 0.0086 seconds.
+2025-05-11 22:58:35,555 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:35,557 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:35,607 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:35,777 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:35,778 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:35,799 - INFO - Reading W took 0.0207 seconds.
+2025-05-11 22:58:35,838 - INFO - Gen took 0.0392 seconds.
+2025-05-11 22:58:35,838 - DEBUG - Generated key: b'.n\x0f\xf2j"p\xd4\xbf\x07\x93=\xfc\xaf^\xe8'
+2025-05-11 22:58:35,838 - INFO - Running Rep 1 times
+2025-05-11 22:58:35,883 - INFO - On average, Rep took 0.0336 seconds.
+2025-05-11 22:58:35,883 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:35,885 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:35,934 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:36,132 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:36,133 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:36,169 - INFO - Reading W took 0.0359 seconds.
+2025-05-11 22:58:36,219 - INFO - Gen took 0.0499 seconds.
+2025-05-11 22:58:36,219 - DEBUG - Generated key: b' 1\xb9\xb2\\\x89B\xc8*\xc2\xb1\x1c\xfe\xb2\xe9`'
+2025-05-11 22:58:36,219 - INFO - Running Rep 1 times
+2025-05-11 22:58:36,295 - INFO - On average, Rep took 0.0511 seconds.
+2025-05-11 22:58:36,296 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:36,298 - INFO - Generating hashes took 0.0022 seconds.
+2025-05-11 22:58:36,355 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:36,522 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:36,523 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:36,541 - INFO - Reading W took 0.0187 seconds.
+2025-05-11 22:58:36,581 - INFO - Gen took 0.0400 seconds.
+2025-05-11 22:58:36,581 - DEBUG - Generated key: b'\x12Z\xe5\x8c\x95\x94Q@\x10\x02\x00g6N\xf5x'
+2025-05-11 22:58:36,581 - INFO - Running Rep 1 times
+2025-05-11 22:58:36,594 - INFO - On average, Rep took 0.0008 seconds.
+2025-05-11 22:58:36,594 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:36,596 - INFO - Generating hashes took 0.0019 seconds.
+2025-05-11 22:58:36,643 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:36,820 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:36,820 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:36,841 - INFO - Reading W took 0.0207 seconds.
+2025-05-11 22:58:36,881 - INFO - Gen took 0.0399 seconds.
+2025-05-11 22:58:36,881 - DEBUG - Generated key: b'_\xe6\xcc%\x9d\xf4\xa0S`m\xd0B~\xd2)\xc2'
+2025-05-11 22:58:36,881 - INFO - Running Rep 1 times
+2025-05-11 22:58:36,926 - INFO - On average, Rep took 0.0339 seconds.
+2025-05-11 22:58:36,926 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:36,928 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:36,977 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:37,142 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:37,143 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:37,162 - INFO - Reading W took 0.0198 seconds.
+2025-05-11 22:58:37,203 - INFO - Gen took 0.0408 seconds.
+2025-05-11 22:58:37,203 - DEBUG - Generated key: b'\xe1\x19\x95n\xd4\x84\x17\xa2g\xb9\x07\xeb\x0f\xb9\xa6I'
+2025-05-11 22:58:37,203 - INFO - Running Rep 1 times
+2025-05-11 22:58:37,228 - INFO - On average, Rep took 0.0071 seconds.
+2025-05-11 22:58:37,228 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:37,230 - INFO - Generating hashes took 0.0019 seconds.
+2025-05-11 22:58:37,283 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:37,463 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:37,464 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:37,488 - INFO - Reading W took 0.0243 seconds.
+2025-05-11 22:58:37,529 - INFO - Gen took 0.0406 seconds.
+2025-05-11 22:58:37,529 - DEBUG - Generated key: b'\xcbCR\xdbtE$\x07\x86\'R"\x8d\x1b\xba\x1b'
+2025-05-11 22:58:37,529 - INFO - Running Rep 1 times
+2025-05-11 22:58:37,544 - INFO - On average, Rep took 0.0043 seconds.
+2025-05-11 22:58:37,544 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:37,546 - INFO - Generating hashes took 0.0019 seconds.
+2025-05-11 22:58:37,595 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:37,762 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:37,762 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:37,780 - INFO - Reading W took 0.0180 seconds.
+2025-05-11 22:58:37,820 - INFO - Gen took 0.0403 seconds.
+2025-05-11 22:58:37,821 - DEBUG - Generated key: b']\x9b4\x91\x90\xee\xccS\xcc\x89K\xa4\xe9\x04\x1a\x04'
+2025-05-11 22:58:37,821 - INFO - Running Rep 1 times
+2025-05-11 22:58:37,860 - INFO - On average, Rep took 0.0247 seconds.
+2025-05-11 22:58:37,861 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:37,863 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:37,912 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:38,097 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:38,098 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:38,128 - INFO - Reading W took 0.0299 seconds.
+2025-05-11 22:58:38,168 - INFO - Gen took 0.0400 seconds.
+2025-05-11 22:58:38,168 - DEBUG - Generated key: b'ON\xfb\x08V\xcd\xfd\x02\xab5\x89\x96\r\x9b\xc6\x8e'
+2025-05-11 22:58:38,168 - INFO - Running Rep 1 times
+2025-05-11 22:58:38,213 - INFO - On average, Rep took 0.0334 seconds.
+2025-05-11 22:58:38,213 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:38,215 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:38,265 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:38,433 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:38,433 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:38,452 - INFO - Reading W took 0.0188 seconds.
+2025-05-11 22:58:38,493 - INFO - Gen took 0.0413 seconds.
+2025-05-11 22:58:38,494 - DEBUG - Generated key: b'7n\x83\xe7\x9eQ\x1c\xd5\x1f\xcbd\xfao\xaa\x04Q'
+2025-05-11 22:58:38,494 - INFO - Running Rep 1 times
+2025-05-11 22:58:38,540 - INFO - On average, Rep took 0.0331 seconds.
+2025-05-11 22:58:38,540 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:38,542 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:38,594 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:38,758 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:38,759 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:38,776 - INFO - Reading W took 0.0177 seconds.
+2025-05-11 22:58:38,817 - INFO - Gen took 0.0409 seconds.
+2025-05-11 22:58:38,817 - DEBUG - Generated key: b"\x8e\xd0\xdc\xb7\xd5+P'\xba\x99\x1a\xd8\xf9\xc0\n\x9f"
+2025-05-11 22:58:38,817 - INFO - Running Rep 1 times
+2025-05-11 22:58:38,862 - INFO - On average, Rep took 0.0338 seconds.
+2025-05-11 22:58:38,862 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:38,864 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:38,918 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:39,099 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:39,100 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:39,122 - INFO - Reading W took 0.0223 seconds.
+2025-05-11 22:58:39,162 - INFO - Gen took 0.0401 seconds.
+2025-05-11 22:58:39,162 - DEBUG - Generated key: b'f@6S\n\xb6\x02^\xce\xee\xee<\xf1H`U'
+2025-05-11 22:58:39,162 - INFO - Running Rep 1 times
+2025-05-11 22:58:39,190 - INFO - On average, Rep took 0.0163 seconds.
+2025-05-11 22:58:39,190 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:39,192 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:39,241 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:39,413 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:39,414 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:39,434 - INFO - Reading W took 0.0198 seconds.
+2025-05-11 22:58:39,474 - INFO - Gen took 0.0401 seconds.
+2025-05-11 22:58:39,474 - DEBUG - Generated key: b',\xe7\x98>@O*Zu\xa0\xce\xb6\xc1\x1f\x111'
+2025-05-11 22:58:39,474 - INFO - Running Rep 1 times
+2025-05-11 22:58:39,519 - INFO - On average, Rep took 0.0333 seconds.
+2025-05-11 22:58:39,519 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:39,521 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:39,569 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:39,734 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:39,734 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:39,753 - INFO - Reading W took 0.0186 seconds.
+2025-05-11 22:58:39,793 - INFO - Gen took 0.0400 seconds.
+2025-05-11 22:58:39,793 - DEBUG - Generated key: b'\xdf\x8b\x93\xae+\xba81\x0ez\xaa_\xe8\x02\n\x16'
+2025-05-11 22:58:39,793 - INFO - Running Rep 1 times
+2025-05-11 22:58:39,820 - INFO - On average, Rep took 0.0160 seconds.
+2025-05-11 22:58:39,820 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:39,822 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:39,871 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:40,041 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:40,041 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:40,062 - INFO - Reading W took 0.0200 seconds.
+2025-05-11 22:58:40,102 - INFO - Gen took 0.0403 seconds.
+2025-05-11 22:58:40,102 - DEBUG - Generated key: b'\x0f)rG\x07\x8f\xf2\x1b6\xcbB\xf9\xacKQ\x04'
+2025-05-11 22:58:40,102 - INFO - Running Rep 1 times
+2025-05-11 22:58:40,123 - INFO - On average, Rep took 0.0067 seconds.
+2025-05-11 22:58:40,123 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:40,125 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:40,174 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:40,339 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:40,339 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:40,357 - INFO - Reading W took 0.0182 seconds.
+2025-05-11 22:58:40,398 - INFO - Gen took 0.0406 seconds.
+2025-05-11 22:58:40,398 - DEBUG - Generated key: b'j\xda\x86\x12\x01\x16\x84~\x01\xf5\xdd\xcf\x9avaI'
+2025-05-11 22:58:40,398 - INFO - Running Rep 1 times
+2025-05-11 22:58:40,444 - INFO - On average, Rep took 0.0348 seconds.
+2025-05-11 22:58:40,444 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:40,446 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:40,496 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:40,665 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:40,665 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:40,686 - INFO - Reading W took 0.0206 seconds.
+2025-05-11 22:58:40,726 - INFO - Gen took 0.0397 seconds.
+2025-05-11 22:58:40,726 - DEBUG - Generated key: b'\x9c\x9d\xcf\x00Y\xcb\xbf\xc4\x14\xf3[:\xf1\xdc\xe0X'
+2025-05-11 22:58:40,726 - INFO - Running Rep 1 times
+2025-05-11 22:58:40,772 - INFO - On average, Rep took 0.0336 seconds.
+2025-05-11 22:58:40,772 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:40,774 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:40,825 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:40,992 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:40,992 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:41,011 - INFO - Reading W took 0.0183 seconds.
+2025-05-11 22:58:41,051 - INFO - Gen took 0.0400 seconds.
+2025-05-11 22:58:41,051 - DEBUG - Generated key: b'\xc2H\xae\xebL\x826=\xf9=\xdf\xc6.\xd3\x16('
+2025-05-11 22:58:41,051 - INFO - Running Rep 1 times
+2025-05-11 22:58:41,076 - INFO - On average, Rep took 0.0135 seconds.
+2025-05-11 22:58:41,076 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:41,078 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:41,128 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:41,307 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:41,307 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:41,327 - INFO - Reading W took 0.0194 seconds.
+2025-05-11 22:58:41,368 - INFO - Gen took 0.0406 seconds.
+2025-05-11 22:58:41,368 - DEBUG - Generated key: b'\xa2}\xd8\x0c?}jki\xc9\xdc\x9cpUd\xf0'
+2025-05-11 22:58:41,368 - INFO - Running Rep 1 times
+2025-05-11 22:58:41,396 - INFO - On average, Rep took 0.0171 seconds.
+2025-05-11 22:58:41,396 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:41,398 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:41,447 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:41,615 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:41,615 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:41,637 - INFO - Reading W took 0.0210 seconds.
+2025-05-11 22:58:41,678 - INFO - Gen took 0.0409 seconds.
+2025-05-11 22:58:41,678 - DEBUG - Generated key: b'8-? \x8ae\x91\xde\xd4\xc2B\x85\x7f\x89\xd7\x0f'
+2025-05-11 22:58:41,678 - INFO - Running Rep 1 times
+2025-05-11 22:58:41,694 - INFO - On average, Rep took 0.0046 seconds.
+2025-05-11 22:58:41,694 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:41,696 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:41,747 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:41,945 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:41,948 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:41,988 - INFO - Reading W took 0.0399 seconds.
+2025-05-11 22:58:42,040 - INFO - Gen took 0.0516 seconds.
+2025-05-11 22:58:42,040 - DEBUG - Generated key: b'\x9aiUXW^gf6\x9a\x14\x8d\x1dk4\xbb'
+2025-05-11 22:58:42,040 - INFO - Running Rep 1 times
+2025-05-11 22:58:42,055 - INFO - On average, Rep took 0.0019 seconds.
+2025-05-11 22:58:42,055 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:42,057 - INFO - Generating hashes took 0.0019 seconds.
+2025-05-11 22:58:42,109 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:42,302 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:42,302 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:42,324 - INFO - Reading W took 0.0213 seconds.
+2025-05-11 22:58:42,364 - INFO - Gen took 0.0399 seconds.
+2025-05-11 22:58:42,364 - DEBUG - Generated key: b'\xc9\xd8\xe15\xf7\xf8\xe3\xf8;\xd5\xc8\xcbY\x02\xe9\xc6'
+2025-05-11 22:58:42,364 - INFO - Running Rep 1 times
+2025-05-11 22:58:42,412 - INFO - On average, Rep took 0.0332 seconds.
+2025-05-11 22:58:42,412 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:42,414 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:42,469 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:42,644 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:42,644 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:42,663 - INFO - Reading W took 0.0184 seconds.
+2025-05-11 22:58:42,703 - INFO - Gen took 0.0398 seconds.
+2025-05-11 22:58:42,703 - DEBUG - Generated key: b'a\x1dP\xc3\x99\x8b\xdd)\x13,\x9egNo\x9f\xcc'
+2025-05-11 22:58:42,703 - INFO - Running Rep 1 times
+2025-05-11 22:58:42,748 - INFO - On average, Rep took 0.0335 seconds.
+2025-05-11 22:58:42,748 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:42,750 - INFO - Generating hashes took 0.0019 seconds.
+2025-05-11 22:58:42,798 - INFO - Generating Arbiter PUFs...
+2025-05-11 22:58:42,967 - INFO - Challenges loaded successfully.
+2025-05-11 22:58:42,968 - INFO - FuzzyExtractor initialized with 7000 lockers.
+2025-05-11 22:58:42,986 - INFO - Reading W took 0.0184 seconds.
+2025-05-11 22:58:43,027 - INFO - Gen took 0.0405 seconds.
+2025-05-11 22:58:43,027 - DEBUG - Generated key: b'\ts\x8c\t\t\xae\x8d\xb8\x1a\xff\xf8\xb8\xc5W\xd9\xc5'
+2025-05-11 22:58:43,027 - INFO - Running Rep 1 times
+2025-05-11 22:58:43,072 - INFO - On average, Rep took 0.0335 seconds.
+2025-05-11 22:58:43,072 - INFO - Hashing to simulate AKE authentication
+2025-05-11 22:58:43,074 - INFO - Generating hashes took 0.0020 seconds.
+2025-05-11 22:58:43,125 - INFO - Total matches: 33/50
+2025-05-11 22:58:43,126 - INFO - Experiments complete.
+2025-05-11 22:58:43,126 - INFO - ====================
+2025-05-11 23:00:18,811 - INFO - Starting Fuzzy Extractor experiments...
+2025-05-11 23:00:18,811 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:19,011 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:19,011 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:19,044 - INFO - Reading W took 0.0323 seconds.
+2025-05-11 23:00:19,106 - INFO - Gen took 0.0621 seconds.
+2025-05-11 23:00:19,106 - DEBUG - Generated key: b'\xcd>\x80_\xa0\x99\x81\xe4\xc9%\x9d\xc9K\xc2\xd2S'
+2025-05-11 23:00:19,106 - INFO - Running Rep 1 times
+2025-05-11 23:00:19,126 - INFO - On average, Rep took 0.0061 seconds.
+2025-05-11 23:00:19,126 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:19,129 - INFO - Generating hashes took 0.0030 seconds.
+2025-05-11 23:00:19,180 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:19,340 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:19,341 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:19,358 - INFO - Reading W took 0.0173 seconds.
+2025-05-11 23:00:19,420 - INFO - Gen took 0.0613 seconds.
+2025-05-11 23:00:19,420 - DEBUG - Generated key: b'\x03u{<GW\xa2\x8a(\xeb\x84\xb6\xe8\x89\x9f-'
+2025-05-11 23:00:19,420 - INFO - Running Rep 1 times
+2025-05-11 23:00:19,474 - INFO - On average, Rep took 0.0396 seconds.
+2025-05-11 23:00:19,474 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:19,477 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:19,537 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:19,704 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:19,705 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:19,725 - INFO - Reading W took 0.0203 seconds.
+2025-05-11 23:00:19,786 - INFO - Gen took 0.0610 seconds.
+2025-05-11 23:00:19,786 - DEBUG - Generated key: b'\xb7\xea(\xc4D\x94Oe\xc9\x0e|Y\x02\xbds\xed'
+2025-05-11 23:00:19,786 - INFO - Running Rep 1 times
+2025-05-11 23:00:19,807 - INFO - On average, Rep took 0.0060 seconds.
+2025-05-11 23:00:19,807 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:19,810 - INFO - Generating hashes took 0.0030 seconds.
+2025-05-11 23:00:19,872 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:20,043 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:20,043 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:20,062 - INFO - Reading W took 0.0182 seconds.
+2025-05-11 23:00:20,123 - INFO - Gen took 0.0617 seconds.
+2025-05-11 23:00:20,123 - DEBUG - Generated key: b'\xfc%\xdf\x02\x1e\xf9\xe8^p\x9e\xa1\rbM\x13\x85'
+2025-05-11 23:00:20,123 - INFO - Running Rep 1 times
+2025-05-11 23:00:20,187 - INFO - On average, Rep took 0.0518 seconds.
+2025-05-11 23:00:20,187 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:20,190 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:20,237 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:20,402 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:20,403 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:20,420 - INFO - Reading W took 0.0172 seconds.
+2025-05-11 23:00:20,481 - INFO - Gen took 0.0616 seconds.
+2025-05-11 23:00:20,481 - DEBUG - Generated key: b'\xb8\xccv\\\xec\x1b;)\xec\xe4Z\xf4+\x0e\x88E'
+2025-05-11 23:00:20,482 - INFO - Running Rep 1 times
+2025-05-11 23:00:20,512 - INFO - On average, Rep took 0.0191 seconds.
+2025-05-11 23:00:20,512 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:20,515 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:20,562 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:20,735 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:20,735 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:20,753 - INFO - Reading W took 0.0180 seconds.
+2025-05-11 23:00:20,815 - INFO - Gen took 0.0619 seconds.
+2025-05-11 23:00:20,815 - DEBUG - Generated key: b'\x07\x1e\x88\x03P\xea\xc3\x08y{\xe9K `\xa8\xad'
+2025-05-11 23:00:20,815 - INFO - Running Rep 1 times
+2025-05-11 23:00:20,828 - INFO - On average, Rep took 0.0014 seconds.
+2025-05-11 23:00:20,828 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:20,831 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:20,878 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:21,045 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:21,046 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:21,063 - INFO - Reading W took 0.0172 seconds.
+2025-05-11 23:00:21,124 - INFO - Gen took 0.0608 seconds.
+2025-05-11 23:00:21,124 - DEBUG - Generated key: b'\x14J\x02/\x84:\x84.\xac\xda\xc6\xf3\xac3\xc6~'
+2025-05-11 23:00:21,124 - INFO - Running Rep 1 times
+2025-05-11 23:00:21,139 - INFO - On average, Rep took 0.0027 seconds.
+2025-05-11 23:00:21,140 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:21,143 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:21,191 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:21,354 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:21,355 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:21,373 - INFO - Reading W took 0.0175 seconds.
+2025-05-11 23:00:21,433 - INFO - Gen took 0.0609 seconds.
+2025-05-11 23:00:21,433 - DEBUG - Generated key: b'\xec\xd1E\x90HXi\xf8c6\x8f\xe7c\xfe\x90\x1f'
+2025-05-11 23:00:21,434 - INFO - Running Rep 1 times
+2025-05-11 23:00:21,493 - INFO - On average, Rep took 0.0488 seconds.
+2025-05-11 23:00:21,493 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:21,496 - INFO - Generating hashes took 0.0030 seconds.
+2025-05-11 23:00:21,544 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:21,710 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:21,711 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:21,729 - INFO - Reading W took 0.0182 seconds.
+2025-05-11 23:00:21,789 - INFO - Gen took 0.0602 seconds.
+2025-05-11 23:00:21,789 - DEBUG - Generated key: b'\x91\x1ed\x8c?\x93\xc4\x85es\xb20\xf0|\t\x8d'
+2025-05-11 23:00:21,789 - INFO - Running Rep 1 times
+2025-05-11 23:00:21,853 - INFO - On average, Rep took 0.0514 seconds.
+2025-05-11 23:00:21,853 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:21,856 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:21,903 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:22,065 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:22,066 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:22,083 - INFO - Reading W took 0.0171 seconds.
+2025-05-11 23:00:22,144 - INFO - Gen took 0.0611 seconds.
+2025-05-11 23:00:22,144 - DEBUG - Generated key: b'\x8e)\xad\x95k\x93\xfa\x95w\xc7\x03\xed\xa6[VS'
+2025-05-11 23:00:22,144 - INFO - Running Rep 1 times
+2025-05-11 23:00:22,157 - INFO - On average, Rep took 0.0018 seconds.
+2025-05-11 23:00:22,157 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:22,160 - INFO - Generating hashes took 0.0030 seconds.
+2025-05-11 23:00:22,208 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:22,373 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:22,374 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:22,391 - INFO - Reading W took 0.0172 seconds.
+2025-05-11 23:00:22,453 - INFO - Gen took 0.0621 seconds.
+2025-05-11 23:00:22,453 - DEBUG - Generated key: b'\x95\xb0Ft\x91;\x9d\xc37\x8e%\xeaEL\xe3\xca'
+2025-05-11 23:00:22,453 - INFO - Running Rep 1 times
+2025-05-11 23:00:22,494 - INFO - On average, Rep took 0.0293 seconds.
+2025-05-11 23:00:22,494 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:22,497 - INFO - Generating hashes took 0.0030 seconds.
+2025-05-11 23:00:22,544 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:22,707 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:22,707 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:22,725 - INFO - Reading W took 0.0172 seconds.
+2025-05-11 23:00:22,785 - INFO - Gen took 0.0602 seconds.
+2025-05-11 23:00:22,785 - DEBUG - Generated key: b',\xd1\xaf\xe2E&\x92\xbe\xf3\x1d\xcbe\xc4\xfb\x8d\xb9'
+2025-05-11 23:00:22,785 - INFO - Running Rep 1 times
+2025-05-11 23:00:22,800 - INFO - On average, Rep took 0.0037 seconds.
+2025-05-11 23:00:22,800 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:22,803 - INFO - Generating hashes took 0.0030 seconds.
+2025-05-11 23:00:22,850 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:23,015 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:23,015 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:23,032 - INFO - Reading W took 0.0173 seconds.
+2025-05-11 23:00:23,093 - INFO - Gen took 0.0608 seconds.
+2025-05-11 23:00:23,093 - DEBUG - Generated key: b'\xa8-\x11\xee\xfb\xbet\x1b\x04\xc8\x1f\x19\xc4\x9c8\xf0'
+2025-05-11 23:00:23,093 - INFO - Running Rep 1 times
+2025-05-11 23:00:23,156 - INFO - On average, Rep took 0.0511 seconds.
+2025-05-11 23:00:23,156 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:23,159 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:23,206 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:23,369 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:23,369 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:23,387 - INFO - Reading W took 0.0178 seconds.
+2025-05-11 23:00:23,449 - INFO - Gen took 0.0618 seconds.
+2025-05-11 23:00:23,449 - DEBUG - Generated key: b'\xfcD\xb7y\xbe\xb9\x14\xec^\xc4\xb4\x02\xb08\xcd0'
+2025-05-11 23:00:23,449 - INFO - Running Rep 1 times
+2025-05-11 23:00:23,493 - INFO - On average, Rep took 0.0329 seconds.
+2025-05-11 23:00:23,493 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:23,496 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:23,544 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:23,713 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:23,713 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:23,731 - INFO - Reading W took 0.0174 seconds.
+2025-05-11 23:00:23,792 - INFO - Gen took 0.0617 seconds.
+2025-05-11 23:00:23,792 - DEBUG - Generated key: b'\x8b\xb6\xccAC>h\xabuH\xed\xe6\xe5\x92\x07m'
+2025-05-11 23:00:23,792 - INFO - Running Rep 1 times
+2025-05-11 23:00:23,806 - INFO - On average, Rep took 0.0021 seconds.
+2025-05-11 23:00:23,806 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:23,809 - INFO - Generating hashes took 0.0030 seconds.
+2025-05-11 23:00:23,857 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:24,023 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:24,024 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:24,041 - INFO - Reading W took 0.0173 seconds.
+2025-05-11 23:00:24,103 - INFO - Gen took 0.0623 seconds.
+2025-05-11 23:00:24,103 - DEBUG - Generated key: b'5;"\xba\x95m\x1d\xf9A\xf0<\x1c\xb6\xd1C\xad'
+2025-05-11 23:00:24,103 - INFO - Running Rep 1 times
+2025-05-11 23:00:24,124 - INFO - On average, Rep took 0.0082 seconds.
+2025-05-11 23:00:24,124 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:24,127 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:24,175 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:24,337 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:24,338 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:24,355 - INFO - Reading W took 0.0172 seconds.
+2025-05-11 23:00:24,416 - INFO - Gen took 0.0615 seconds.
+2025-05-11 23:00:24,416 - DEBUG - Generated key: b'B\xfd\x06\xad\x19\x88\xba\x0c\xb0\x0f\xc1\x9c\x06\x19\xcff'
+2025-05-11 23:00:24,416 - INFO - Running Rep 1 times
+2025-05-11 23:00:24,446 - INFO - On average, Rep took 0.0189 seconds.
+2025-05-11 23:00:24,446 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:24,450 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:24,497 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:24,661 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:24,662 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:24,679 - INFO - Reading W took 0.0173 seconds.
+2025-05-11 23:00:24,740 - INFO - Gen took 0.0614 seconds.
+2025-05-11 23:00:24,740 - DEBUG - Generated key: b'W\x10"\'\xef\xf2\\\x15:\x97lo=\xda\x1e/'
+2025-05-11 23:00:24,740 - INFO - Running Rep 1 times
+2025-05-11 23:00:24,764 - INFO - On average, Rep took 0.0123 seconds.
+2025-05-11 23:00:24,764 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:24,767 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:24,814 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:24,977 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:24,977 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:24,994 - INFO - Reading W took 0.0171 seconds.
+2025-05-11 23:00:25,056 - INFO - Gen took 0.0612 seconds.
+2025-05-11 23:00:25,056 - DEBUG - Generated key: b'e\xc3%\x07\xf7\x91<Z\x9f\x98\xf5z\xb9\x19\xc8\xc2'
+2025-05-11 23:00:25,056 - INFO - Running Rep 1 times
+2025-05-11 23:00:25,105 - INFO - On average, Rep took 0.0386 seconds.
+2025-05-11 23:00:25,105 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:25,109 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:25,156 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:25,323 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:25,324 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:25,341 - INFO - Reading W took 0.0172 seconds.
+2025-05-11 23:00:25,402 - INFO - Gen took 0.0611 seconds.
+2025-05-11 23:00:25,402 - DEBUG - Generated key: b'\x89*\xdd\t ^\xd8\xcd\x86\xab\xb1L\xfa\x81\xd92'
+2025-05-11 23:00:25,402 - INFO - Running Rep 1 times
+2025-05-11 23:00:25,464 - INFO - On average, Rep took 0.0513 seconds.
+2025-05-11 23:00:25,464 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:25,468 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:25,515 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:25,682 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:25,682 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:25,700 - INFO - Reading W took 0.0172 seconds.
+2025-05-11 23:00:25,760 - INFO - Gen took 0.0608 seconds.
+2025-05-11 23:00:25,760 - DEBUG - Generated key: b'\xe7\xc83e\xf7*\xd0V\xc3HC|\xc8\xd8\xe7G'
+2025-05-11 23:00:25,760 - INFO - Running Rep 1 times
+2025-05-11 23:00:25,787 - INFO - On average, Rep took 0.0160 seconds.
+2025-05-11 23:00:25,787 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:25,791 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:25,838 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:26,000 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:26,001 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:26,018 - INFO - Reading W took 0.0173 seconds.
+2025-05-11 23:00:26,080 - INFO - Gen took 0.0614 seconds.
+2025-05-11 23:00:26,080 - DEBUG - Generated key: b'\xc8"\xbdG\xf7\xf0\x91\xc0\xbc\xa1y9B\xbc\x11\xb8'
+2025-05-11 23:00:26,080 - INFO - Running Rep 1 times
+2025-05-11 23:00:26,102 - INFO - On average, Rep took 0.0111 seconds.
+2025-05-11 23:00:26,102 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:26,105 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:26,153 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:26,316 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:26,316 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:26,334 - INFO - Reading W took 0.0172 seconds.
+2025-05-11 23:00:26,395 - INFO - Gen took 0.0615 seconds.
+2025-05-11 23:00:26,395 - DEBUG - Generated key: b'\x13\xf5A\x94\xe5\xb3\xe9\xcb\xef\x95\xe6\x1e$]E8'
+2025-05-11 23:00:26,395 - INFO - Running Rep 1 times
+2025-05-11 23:00:26,409 - INFO - On average, Rep took 0.0024 seconds.
+2025-05-11 23:00:26,409 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:26,412 - INFO - Generating hashes took 0.0030 seconds.
+2025-05-11 23:00:26,459 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:26,620 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:26,621 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:26,638 - INFO - Reading W took 0.0171 seconds.
+2025-05-11 23:00:26,700 - INFO - Gen took 0.0622 seconds.
+2025-05-11 23:00:26,700 - DEBUG - Generated key: b'\xaeH\x04\xd7\xe9\xa7\xcb\x81=.\xc3\xfe\x02\xfc\xf2\x01'
+2025-05-11 23:00:26,700 - INFO - Running Rep 1 times
+2025-05-11 23:00:26,719 - INFO - On average, Rep took 0.0075 seconds.
+2025-05-11 23:00:26,719 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:26,722 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:26,770 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:26,935 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:26,936 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:26,953 - INFO - Reading W took 0.0172 seconds.
+2025-05-11 23:00:27,014 - INFO - Gen took 0.0613 seconds.
+2025-05-11 23:00:27,014 - DEBUG - Generated key: b'B_\xee\xdb\x1b\x18\xad\xbc^\x1e\xc4I\xd3\xa3\xbdz'
+2025-05-11 23:00:27,014 - INFO - Running Rep 1 times
+2025-05-11 23:00:27,030 - INFO - On average, Rep took 0.0047 seconds.
+2025-05-11 23:00:27,030 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:27,033 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:27,080 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:27,243 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:27,244 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:27,261 - INFO - Reading W took 0.0172 seconds.
+2025-05-11 23:00:27,323 - INFO - Gen took 0.0617 seconds.
+2025-05-11 23:00:27,323 - DEBUG - Generated key: b'\xb8*@\xf4\xff\xf7\x1f\x11\xb2\xa0\x05\x03\xd6\x8d\xceq'
+2025-05-11 23:00:27,323 - INFO - Running Rep 1 times
+2025-05-11 23:00:27,385 - INFO - On average, Rep took 0.0509 seconds.
+2025-05-11 23:00:27,385 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:27,388 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:27,435 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:27,595 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:27,596 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:27,613 - INFO - Reading W took 0.0173 seconds.
+2025-05-11 23:00:27,674 - INFO - Gen took 0.0605 seconds.
+2025-05-11 23:00:27,674 - DEBUG - Generated key: b'g\x03\xb2\x8d\x08.Ea\xf5\x1amY@8\x8e\x05'
+2025-05-11 23:00:27,674 - INFO - Running Rep 1 times
+2025-05-11 23:00:27,705 - INFO - On average, Rep took 0.0197 seconds.
+2025-05-11 23:00:27,705 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:27,708 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:27,755 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:27,917 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:27,918 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:27,935 - INFO - Reading W took 0.0172 seconds.
+2025-05-11 23:00:27,996 - INFO - Gen took 0.0607 seconds.
+2025-05-11 23:00:27,996 - DEBUG - Generated key: b'*g\x8b_\xf9I\x89\x9clM!H\xcf\xe6LA'
+2025-05-11 23:00:27,996 - INFO - Running Rep 1 times
+2025-05-11 23:00:28,016 - INFO - On average, Rep took 0.0093 seconds.
+2025-05-11 23:00:28,016 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:28,019 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:28,067 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:28,230 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:28,231 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:28,248 - INFO - Reading W took 0.0174 seconds.
+2025-05-11 23:00:28,310 - INFO - Gen took 0.0617 seconds.
+2025-05-11 23:00:28,310 - DEBUG - Generated key: b'\xff\xe8\xa5\xae4gN\x90\xea1b\xba\xd7\x80c\xf7'
+2025-05-11 23:00:28,310 - INFO - Running Rep 1 times
+2025-05-11 23:00:28,328 - INFO - On average, Rep took 0.0072 seconds.
+2025-05-11 23:00:28,328 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:28,331 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:28,379 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:28,544 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:28,545 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:28,562 - INFO - Reading W took 0.0172 seconds.
+2025-05-11 23:00:28,625 - INFO - Gen took 0.0627 seconds.
+2025-05-11 23:00:28,625 - DEBUG - Generated key: b'\x8a\xe159\xcd)8iJ\xf5\xd3Pj\x0e\x96\xf7'
+2025-05-11 23:00:28,625 - INFO - Running Rep 1 times
+2025-05-11 23:00:28,678 - INFO - On average, Rep took 0.0425 seconds.
+2025-05-11 23:00:28,678 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:28,682 - INFO - Generating hashes took 0.0032 seconds.
+2025-05-11 23:00:28,729 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:28,893 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:28,894 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:28,911 - INFO - Reading W took 0.0171 seconds.
+2025-05-11 23:00:28,973 - INFO - Gen took 0.0626 seconds.
+2025-05-11 23:00:28,974 - DEBUG - Generated key: b'\xbfb\xb7\xef\x92I\xec\xb4B\x04\x04\xa3\xa9\xbc\xad\xa2'
+2025-05-11 23:00:28,974 - INFO - Running Rep 1 times
+2025-05-11 23:00:28,988 - INFO - On average, Rep took 0.0034 seconds.
+2025-05-11 23:00:28,988 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:28,991 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:29,039 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:29,203 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:29,204 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:29,221 - INFO - Reading W took 0.0174 seconds.
+2025-05-11 23:00:29,283 - INFO - Gen took 0.0616 seconds.
+2025-05-11 23:00:29,283 - DEBUG - Generated key: b'\xf00\x04\r\xbc\xadD\x05R\x864c\x1dm\xb0a'
+2025-05-11 23:00:29,283 - INFO - Running Rep 1 times
+2025-05-11 23:00:29,315 - INFO - On average, Rep took 0.0207 seconds.
+2025-05-11 23:00:29,315 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:29,318 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:29,365 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:29,526 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:29,527 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:29,544 - INFO - Reading W took 0.0176 seconds.
+2025-05-11 23:00:29,606 - INFO - Gen took 0.0614 seconds.
+2025-05-11 23:00:29,606 - DEBUG - Generated key: b'N$\x98Z\x16\x12\xcd>\x1e3\xfa\xd1\xde\xab\xfb,'
+2025-05-11 23:00:29,606 - INFO - Running Rep 1 times
+2025-05-11 23:00:29,669 - INFO - On average, Rep took 0.0516 seconds.
+2025-05-11 23:00:29,669 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:29,672 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:29,719 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:29,881 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:29,882 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:29,899 - INFO - Reading W took 0.0172 seconds.
+2025-05-11 23:00:29,960 - INFO - Gen took 0.0615 seconds.
+2025-05-11 23:00:29,960 - DEBUG - Generated key: b'+d~\xc4\x95\xd2\x19<yp\x11\x15\x91\x7f\xfa\xc2'
+2025-05-11 23:00:29,960 - INFO - Running Rep 1 times
+2025-05-11 23:00:30,011 - INFO - On average, Rep took 0.0402 seconds.
+2025-05-11 23:00:30,012 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:30,015 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:30,062 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:30,225 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:30,225 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:30,243 - INFO - Reading W took 0.0174 seconds.
+2025-05-11 23:00:30,305 - INFO - Gen took 0.0616 seconds.
+2025-05-11 23:00:30,305 - DEBUG - Generated key: b'\xbc\x10\xad\xfb\xad*\xebG\x0f\x9bx\x04\xb1\xc1\xe3\xc3'
+2025-05-11 23:00:30,305 - INFO - Running Rep 1 times
+2025-05-11 23:00:30,343 - INFO - On average, Rep took 0.0273 seconds.
+2025-05-11 23:00:30,343 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:30,346 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:30,394 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:30,557 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:30,557 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:30,575 - INFO - Reading W took 0.0172 seconds.
+2025-05-11 23:00:30,636 - INFO - Gen took 0.0615 seconds.
+2025-05-11 23:00:30,636 - DEBUG - Generated key: b'4%\xb3\x02\x85\xabC<\x7f\xe7{\xef`\x99\x956'
+2025-05-11 23:00:30,636 - INFO - Running Rep 1 times
+2025-05-11 23:00:30,699 - INFO - On average, Rep took 0.0520 seconds.
+2025-05-11 23:00:30,699 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:30,702 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:30,749 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:30,912 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:30,912 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:30,930 - INFO - Reading W took 0.0173 seconds.
+2025-05-11 23:00:30,992 - INFO - Gen took 0.0624 seconds.
+2025-05-11 23:00:30,992 - DEBUG - Generated key: b'G\xd6\xa2\xd3\xad\xbf\x86\xad\x08v\xe7t\x14\xe1\x1d\xce'
+2025-05-11 23:00:30,992 - INFO - Running Rep 1 times
+2025-05-11 23:00:31,020 - INFO - On average, Rep took 0.0171 seconds.
+2025-05-11 23:00:31,020 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:31,023 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:31,071 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:31,234 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:31,234 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:31,252 - INFO - Reading W took 0.0173 seconds.
+2025-05-11 23:00:31,314 - INFO - Gen took 0.0624 seconds.
+2025-05-11 23:00:31,314 - DEBUG - Generated key: b'\xc6\xfd\x8bO\xfd\xb0\x18\xad\xe0j"\n\x0bf)\xf3'
+2025-05-11 23:00:31,314 - INFO - Running Rep 1 times
+2025-05-11 23:00:31,327 - INFO - On average, Rep took 0.0014 seconds.
+2025-05-11 23:00:31,327 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:31,330 - INFO - Generating hashes took 0.0030 seconds.
+2025-05-11 23:00:31,377 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:31,539 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:31,539 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:31,556 - INFO - Reading W took 0.0172 seconds.
+2025-05-11 23:00:31,618 - INFO - Gen took 0.0616 seconds.
+2025-05-11 23:00:31,618 - DEBUG - Generated key: b')n\x95\xf3\xd2R\x02/\xbc\xb7p\\\x05\x8a\xb8\x15'
+2025-05-11 23:00:31,618 - INFO - Running Rep 1 times
+2025-05-11 23:00:31,642 - INFO - On average, Rep took 0.0124 seconds.
+2025-05-11 23:00:31,642 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:31,645 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:31,693 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:31,860 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:31,861 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:31,878 - INFO - Reading W took 0.0172 seconds.
+2025-05-11 23:00:31,940 - INFO - Gen took 0.0618 seconds.
+2025-05-11 23:00:31,940 - DEBUG - Generated key: b'\x13\x03\x15\xafQ\xce\xeb\xe22\xddA]\x97\xfe\xb7\xc0'
+2025-05-11 23:00:31,940 - INFO - Running Rep 1 times
+2025-05-11 23:00:31,953 - INFO - On average, Rep took 0.0018 seconds.
+2025-05-11 23:00:31,953 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:31,956 - INFO - Generating hashes took 0.0030 seconds.
+2025-05-11 23:00:32,004 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:32,170 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:32,171 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:32,188 - INFO - Reading W took 0.0171 seconds.
+2025-05-11 23:00:32,249 - INFO - Gen took 0.0616 seconds.
+2025-05-11 23:00:32,249 - DEBUG - Generated key: b'\x8d@\xbf\xa1e_\t\xd8D\x86\xe1\xfb\xc0\xc5\xf0\xca'
+2025-05-11 23:00:32,249 - INFO - Running Rep 1 times
+2025-05-11 23:00:32,273 - INFO - On average, Rep took 0.0126 seconds.
+2025-05-11 23:00:32,273 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:32,276 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:32,323 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:32,485 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:32,486 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:32,503 - INFO - Reading W took 0.0175 seconds.
+2025-05-11 23:00:32,565 - INFO - Gen took 0.0616 seconds.
+2025-05-11 23:00:32,565 - DEBUG - Generated key: b"\x1f'\xd2\x97I\x98\xe4\xda\xbf\xe0\x011M\xc7\x96Z"
+2025-05-11 23:00:32,565 - INFO - Running Rep 1 times
+2025-05-11 23:00:32,610 - INFO - On average, Rep took 0.0340 seconds.
+2025-05-11 23:00:32,610 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:32,613 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:32,660 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:32,823 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:32,823 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:32,841 - INFO - Reading W took 0.0173 seconds.
+2025-05-11 23:00:32,903 - INFO - Gen took 0.0619 seconds.
+2025-05-11 23:00:32,903 - DEBUG - Generated key: b'\xbe\x06\xce8\x95Q\x11LF,\xca}z\xf2us'
+2025-05-11 23:00:32,903 - INFO - Running Rep 1 times
+2025-05-11 23:00:32,966 - INFO - On average, Rep took 0.0518 seconds.
+2025-05-11 23:00:32,966 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:32,969 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:33,016 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:33,178 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:33,179 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:33,196 - INFO - Reading W took 0.0173 seconds.
+2025-05-11 23:00:33,258 - INFO - Gen took 0.0621 seconds.
+2025-05-11 23:00:33,258 - DEBUG - Generated key: b'`\xa9\xabC0\xf1\x12}/\x81\x93[\xae!\x0b.'
+2025-05-11 23:00:33,258 - INFO - Running Rep 1 times
+2025-05-11 23:00:33,316 - INFO - On average, Rep took 0.0471 seconds.
+2025-05-11 23:00:33,317 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:33,320 - INFO - Generating hashes took 0.0032 seconds.
+2025-05-11 23:00:33,368 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:33,534 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:33,534 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:33,552 - INFO - Reading W took 0.0173 seconds.
+2025-05-11 23:00:33,613 - INFO - Gen took 0.0614 seconds.
+2025-05-11 23:00:33,613 - DEBUG - Generated key: b'7\xc4y\xd9=&N\x8a\x81\xee\xf5\x847\xd1#\xb8'
+2025-05-11 23:00:33,613 - INFO - Running Rep 1 times
+2025-05-11 23:00:33,664 - INFO - On average, Rep took 0.0396 seconds.
+2025-05-11 23:00:33,664 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:33,667 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:33,716 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:33,879 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:33,880 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:33,897 - INFO - Reading W took 0.0173 seconds.
+2025-05-11 23:00:33,960 - INFO - Gen took 0.0624 seconds.
+2025-05-11 23:00:33,960 - DEBUG - Generated key: b'\xfc[J\t\xf9\xf1\xa6\\\xb8\xc81\x8f|"\xfd\x8c'
+2025-05-11 23:00:33,960 - INFO - Running Rep 1 times
+2025-05-11 23:00:33,976 - INFO - On average, Rep took 0.0052 seconds.
+2025-05-11 23:00:33,976 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:33,979 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:34,027 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:34,193 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:34,194 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:34,211 - INFO - Reading W took 0.0171 seconds.
+2025-05-11 23:00:34,274 - INFO - Gen took 0.0627 seconds.
+2025-05-11 23:00:34,274 - DEBUG - Generated key: b'\xc7\xde\xff\xa4\xeeI~7a|\xc6f\x94=\xa7\x9b'
+2025-05-11 23:00:34,274 - INFO - Running Rep 1 times
+2025-05-11 23:00:34,328 - INFO - On average, Rep took 0.0428 seconds.
+2025-05-11 23:00:34,328 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:34,331 - INFO - Generating hashes took 0.0032 seconds.
+2025-05-11 23:00:34,378 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:34,544 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:34,545 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:34,562 - INFO - Reading W took 0.0174 seconds.
+2025-05-11 23:00:34,624 - INFO - Gen took 0.0614 seconds.
+2025-05-11 23:00:34,624 - DEBUG - Generated key: b'\x12\x96\xbdT\x98xD\x14\xa5\xda|b#\x1f\xabB'
+2025-05-11 23:00:34,624 - INFO - Running Rep 1 times
+2025-05-11 23:00:34,649 - INFO - On average, Rep took 0.0138 seconds.
+2025-05-11 23:00:34,649 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:34,652 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:34,699 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:34,861 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:34,861 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:34,878 - INFO - Reading W took 0.0171 seconds.
+2025-05-11 23:00:34,941 - INFO - Gen took 0.0628 seconds.
+2025-05-11 23:00:34,941 - DEBUG - Generated key: b's\xdc\xa9_U\xfc\xc0l\x83\x94(\xf2%94I'
+2025-05-11 23:00:34,941 - INFO - Running Rep 1 times
+2025-05-11 23:00:34,999 - INFO - On average, Rep took 0.0462 seconds.
+2025-05-11 23:00:34,999 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:35,002 - INFO - Generating hashes took 0.0031 seconds.
+2025-05-11 23:00:35,049 - INFO - Generating Arbiter PUFs...
+2025-05-11 23:00:35,210 - INFO - Challenges loaded successfully.
+2025-05-11 23:00:35,211 - INFO - FuzzyExtractor initialized with 11000 lockers.
+2025-05-11 23:00:35,228 - INFO - Reading W took 0.0172 seconds.
+2025-05-11 23:00:35,290 - INFO - Gen took 0.0622 seconds.
+2025-05-11 23:00:35,290 - DEBUG - Generated key: b'\x97x}Mj\xee\x84R\xca\xab\xc2\xe8\xae\x8c\xbe\x9e'
+2025-05-11 23:00:35,290 - INFO - Running Rep 1 times
+2025-05-11 23:00:35,354 - INFO - On average, Rep took 0.0523 seconds.
+2025-05-11 23:00:35,354 - INFO - Hashing to simulate AKE authentication
+2025-05-11 23:00:35,357 - INFO - Generating hashes took 0.0032 seconds.
+2025-05-11 23:00:35,404 - INFO - Total matches: 41/50
+2025-05-11 23:00:35,404 - INFO - Experiments complete.
+2025-05-11 23:00:35,404 - INFO - ====================
 
