@@ -2,5 +2,4 @@ __pycache__
 *.pyc
 .venv/
 *.log
-challenges/*
 .DS_Store
