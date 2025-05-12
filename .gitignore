@@ -1,5 +1,6 @@
-__pycache__/utilities.cpython-312.pyc
+__pycache__
 *.pyc
 .venv/
 *.log
 challenges/*
+.DS_Store
