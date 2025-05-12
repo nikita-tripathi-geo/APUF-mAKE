@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 """Robustly Reusable Fuzzy Extractor for noisy sources, such as APUF responses.
 
-The Fuzzy Extractor ensures robust cryptographic key generation even when the input data is
-noisy. It supports multithreaded reproduction attempts to enhance performance with large ell.
+The Fuzzy Extractor ensures robust cryptographic key generation even when the
+input data is noisy. It supports multithreaded reproduction attempts to enhance
+performance with large ell.
 
 Classes:
     FuzzyExtractor: A class for key encoding and recovery using noisy samples.
@@ -25,15 +26,15 @@ Example:
 
     # Generate Arbiter PUF samples
     apuf = generate_n_APUFs(1, 129, weight_mean=0, weight_stdev=0.05)
-    challenges = np.load("challenges/1_mil_challenges.npy")
+    chals = np.load("challenges/1_mil_challenges.npy")
 
     # Initialize Fuzzy Extractor
     fe = FuzzyExtractor()
 
     # Generate and reproduce a key
-    server_sample = bytes(get_noisy_responses(1, [apuf], challenges, 0, 0.05 * 0.1))
+    server_sample = bytes(get_noisy_responses(1, [apuf], chals, 0, 0.05 * 0.1))
     key = fe.generate(server_sample)
-    user_sample = bytes(get_noisy_responses(1, [apuf], challenges, 0, 0.05 * 0.1))
+    user_sample = bytes(get_noisy_responses(1, [apuf], chals, 0, 0.05 * 0.1))
     recovered_key = fe.reproduce(user_sample)
 
     assert key == recovered_key
@@ -44,8 +45,8 @@ Attributes:
 
 Notes:
     - This implementation assumes Python 3.12.6+
-    - Some methods (`reproduce_multithreaded` and `reproduce_process`) are marked as TODO 
-      and require further refinement.
+    - Some methods (`reproduce_multithreaded` and `reproduce_process`) are 
+      marked as TODO and require further refinement.
 
 """
 
@@ -61,7 +62,8 @@ import time
 
 import numpy as np
 from utilities import xor_bytes
-from apuf_simulation import generate_n_APUFs, get_noisy_responses
+from apuf import APUF
+
 
 # Configure logging to output to both console and a file
 logging.basicConfig(
@@ -78,8 +80,8 @@ class FuzzyExtractor:
     """
     Implements a Fuzzy Extractor for key encoding and recovery using noisy data.
 
-    This class allows generation of a cryptographic key using noisy samples,
-    and can reproduce the key using a "fresh" samples that close to the original.
+    This class allows generation of a cryptographic key using noisy samples, and
+    can reproduce the key using a "fresh" samples that close to the original.
 
     Attributes:
         m (int): Length of individual sample in bits.
@@ -103,7 +105,7 @@ class FuzzyExtractor:
         mac_key_len: int = 128,
         padding_len: int = 128,
         nonce_len: int = 64,
-        # seed: int = None
+        seed: int = 0
     ) -> None:
         """
         Initializes the Fuzzy Extractor with given parameters.
@@ -115,16 +117,17 @@ class FuzzyExtractor:
             mac_key_len (int): Length of MAC key for authentication in bits.
             padding_len (int): Length of zero padding in bits.
             nonce_len (int): Length of nonce used for each locker in bytes.
-            seed (int, optional): Seed for reproducibility (currently unused, TODO).
+            seed (int): 32-bit PRNG seed used for subsample generation. 
         """
 
         # System parameters
-        self.m = sample_len
+        self.m = sample_len // 8
         self.ell = locker_num
         self.xi = key_len // 8
         self.lbd = mac_key_len // 8
         self.t = padding_len // 8
         self.nonce_len = nonce_len
+        self.seed = seed
 
         # Total message length (0^t || R || R_1)
         self.msg_len = self.xi + self.lbd + self.t
@@ -167,7 +170,12 @@ class FuzzyExtractor:
         self.h = [token_bytes(self.nonce_len) for _ in range(self.ell)]
 
         # Generate \ell subsample positions
-        self.positions = np.random.choice(len(w), (self.ell, self.m), replace=True)
+        rng = np.random.default_rng(seed=self.seed)
+        self.positions = rng.choice(
+            len(w),
+            size=(self.ell, self.m),
+            replace=True
+            )
 
         # Begin locking with samples w_i
         for i in range(self.ell):
@@ -178,12 +186,15 @@ class FuzzyExtractor:
             # One Time Pad
             self.ctxt[i] = xor_bytes(msg, pad)
 
+        # print(itemgetter(*self.positions[0])(w))
+
         # Join ciphertexts
         self.joint_ctxt = b"".join(self.ctxt)
 
-        # Calculate tag TODO add seed
-        self.tag = sha256(self.joint_ctxt + tag_key).digest()
-        # self.tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=sha256)
+        # Calculate tag
+        self.tag = sha256(self.joint_ctxt +
+                          self.seed.to_bytes(length=4, byteorder="big") +
+                          tag_key).digest()
 
         return key
 
@@ -198,6 +209,8 @@ class FuzzyExtractor:
         Returns:
             bytes: The reproduced key if successful; None otherwise.
         """
+        # print(itemgetter(*self.positions[0])(w_))
+
         # Begin opening locks
         for i in range(self.ell):
             # Construct a subsample
@@ -213,26 +226,29 @@ class FuzzyExtractor:
                 key = msg_[self.t : (self.t + self.xi)]
                 tag_key = msg_[(self.t + self.xi) :]
 
-                # tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=sha256)
-                tag = sha256(self.joint_ctxt + tag_key).digest()
+                tag = sha256(self.joint_ctxt +
+                             self.seed.to_bytes(length=4, byteorder="big") +
+                             tag_key).digest()
 
                 if tag == self.tag:
                     return key
 
         return None
 
-    def reproduce_multithreaded(self, w: list[bytes], num_processes: int = 1) -> bytes:
+    def reproduce_multithreaded(self, w: list[bytes],
+                                procs: int = multiprocessing.cpu_count
+                                ) -> bytes:
         """
         TODO
         """
 
         finished = multiprocessing.Array("b", False)
-        split = np.array_split(list(range(self.ell)), num_processes)
-        finished = multiprocessing.Manager().list([None for _ in range(num_processes)])
+        split = np.array_split(list(range(self.ell)), procs)
+        finished = multiprocessing.Manager().list([None for _ in range(procs)])
 
         processes = []
 
-        for process_id in range(num_processes):
+        for process_id in range(procs):
             pr = multiprocessing.Process(
                 target=self.reproduce_process,
                 args=(w, split[process_id], finished, process_id),
@@ -248,6 +264,7 @@ class FuzzyExtractor:
 
         return None
 
+
     def reproduce_process(
         self, w: list[bytes], indices: list[int], finished, process_id: int
     ) -> None:
@@ -257,7 +274,8 @@ class FuzzyExtractor:
         update = 0
 
         for index in indices:
-            pad = hmac.digest(key=w[index], msg=self.h[index], digest=self.digest)
+            pad = hmac.digest(key=w[index], msg=self.h[index],
+                              digest=self.digest)
             msg = xor_bytes(self.ctxt[index], pad)
 
             # Test for validity
@@ -266,7 +284,11 @@ class FuzzyExtractor:
                 key = msg[self.t : (self.t + self.xi)]
                 tag_key = msg[(self.t + self.xi) :]
 
-                tag = hmac.digest(key=tag_key, msg=self.joint_ctxt, digest=self.digest)
+                # Calculate tag
+                tag = sha256(self.joint_ctxt +
+                                self.seed.to_bytes(length=4, byteorder="big") +
+
+                                tag_key).digest()
 
                 if tag == self.tag:
                     finished[process_id] = key
@@ -291,12 +313,12 @@ def main(num_rep, locker_num):
 
     # Simulate Arbiter PUFs
     logging.info("Generating Arbiter PUFs...")
-    apuf = generate_n_APUFs(1, 129, weight_mean=0, weight_stdev=0.05)
-    # apuf_adversary = generate_n_APUFs(1, 129, weight_mean=0, weight_stdev=0.05)
+    puf = APUF(128)
+    # adversary_puf = APUF(128)
 
     # Load challenges
     try:
-        challenges = np.load("challenges/1_mil_challenges.npy")
+        chals = np.load("challenges/1_mil_challenges.npy")
         logging.info("Challenges loaded successfully.")
     except FileNotFoundError:
         logging.error("Challenge file not found. Ensure the path is correct.")
@@ -306,7 +328,7 @@ def main(num_rep, locker_num):
 
     # Server obtains sample W
     t = time.perf_counter()
-    server_sample = bytes(get_noisy_responses(1, [apuf], challenges, 0, 0.05 * 0.1))
+    server_sample = bytes(puf.get_responses(chals, nmean=0.0, nstd=0.005))
     t1 = time.perf_counter()
     logging.info("Reading W took %.4f seconds.", t1 - t)
 
@@ -323,7 +345,7 @@ def main(num_rep, locker_num):
     logging.info("Running Rep %d times", num_rep)
     for _ in range(num_rep):
         # User obtains a fresh sample W'
-        user_sample = bytes(get_noisy_responses(1, [apuf], challenges, 0, 0.05 * 0.1))
+        user_sample = bytes(puf.get_responses(chals, nmean=0.0, nstd=0.005))
 
         t = time.perf_counter()
         key_ = fe.reproduce(user_sample)
@@ -333,28 +355,29 @@ def main(num_rep, locker_num):
         if key == key_:
             match_num += 1
 
-    logging.info("On average, reproduction took %.4f seconds.", np.mean(rep_times))
+    logging.info("On average, Rep took %.4f seconds.", np.mean(rep_times))
     # logging.info("Correctly recovered key %d/%d times.", match_num, num_rep)
 
     logging.info("Hashing to simulate AKE authentication")
     t = time.perf_counter()
 
-    nonce = token_bytes(8) # 64 bit nonce
-    h1 = sha256(nonce + fe.joint_ctxt + b'user' + b'server' + key).digest()
-    h2 = sha256(nonce + fe.joint_ctxt + b'user' + b'server' + key).digest()
+    # nonce = token_bytes(8) # 64 bit nonce
+    # h1 = sha256(nonce + fe.joint_ctxt + b"user" + b"server" + key).digest()
+    # h2 = sha256(nonce + fe.joint_ctxt + b"user" + b"server" + key).digest()
 
-    session_key = sha256(fe.joint_ctxt + b'user' + b'server' + key).digest()
-    t1 = time.perf_counter()
-    print(h1, h2, session_key)
-    logging.info("Generating hashes took %.4f seconds.", t1 - t)
+    # session_key = sha256(fe.joint_ctxt + b"user" + b"server" + key).digest()
+    # t1 = time.perf_counter()
+    # # print(h1, h2, session_key)
+    # logging.info("Generating hashes took %.4f seconds.", t1 - t)
 
-
+    # r1 = puf.get_responses(chals)
+    # r2 = puf.get_responses(chals)
 
     return match_num
 
 
 if __name__ == "__main__":
     logging.info("Starting Fuzzy Extractor experiments...")
-    logging.info("Total number of matches: %d/%d", sum(main(1, 3500) for i in range(50)), 50)
+    logging.info("Total matches: %d/50", sum(main(1, 11000) for i in range(50)))
     logging.info("Experiments complete.")
     logging.info("====================\n")
