@@ -59,6 +59,7 @@ from hashlib import sha384, sha256
 
 import logging
 import time
+from typing import Optional
 
 import numpy as np
 from utilities import xor_bytes
@@ -140,7 +141,7 @@ class FuzzyExtractor:
         self.joint_ctxt = bytes(0)
         self.tag = bytes(0)
         self.h = []
-        self.positions = None
+        self.positions = np.array([])
 
         # Pre-compute zero string for faster comparison
         self.zeros = bytes([0] * self.t)
@@ -199,17 +200,16 @@ class FuzzyExtractor:
         return key
 
 
-    def reproduce(self, w_: list[bytes]) -> bytes:
+    def reproduce(self, w_: bytes) -> Optional[bytes]:
         """
         Attempts to recover the cryptographic key using noisy samples.
 
         Args:
-            w_ (list[bytes]): List of samples used to recover the key.
+            w_ (bytes): List of samples used to recover the key.
 
         Returns:
             bytes: The reproduced key if successful; None otherwise.
         """
-        # print(itemgetter(*self.positions[0])(w_))
 
         # Begin opening locks
         for i in range(self.ell):
@@ -236,8 +236,8 @@ class FuzzyExtractor:
         return None
 
     def reproduce_multithreaded(self, w: list[bytes],
-                                procs: int = multiprocessing.cpu_count
-                                ) -> bytes:
+                                procs: int = multiprocessing.cpu_count()
+                                ) -> Optional[bytes]:
         """
         TODO
         """
