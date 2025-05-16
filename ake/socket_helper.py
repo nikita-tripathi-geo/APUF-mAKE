@@ -4,7 +4,7 @@ import socket
 import struct
 
 # CONFIGURATION
-DEFAULT_TIMEOUT = 5.0     # seconds for connect/recv/send
+DEFAULT_TIMEOUT = 100.0     # seconds for connect/recv/send
 _LEN_HDR = 4              # 4-byte length prefix (uint32, big-endian)
 
 # EXCEPTIONS
