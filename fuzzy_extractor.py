@@ -141,7 +141,6 @@ class FuzzyExtractor:
         self.joint_ctxt = bytes(0)
         self.tag = bytes(0)
         self.h = []
-        self.positions = np.array([])
 
         # Pre-compute zero string for faster comparison
         self.zeros = bytes([0] * self.t)
@@ -172,7 +171,7 @@ class FuzzyExtractor:
 
         # Generate \ell subsample positions
         rng = np.random.default_rng(seed=self.seed)
-        self.positions = rng.choice(
+        positions = rng.choice(
             len(w),
             size=(self.ell, self.m),
             replace=True
@@ -181,7 +180,7 @@ class FuzzyExtractor:
         # Begin locking with samples w_i
         for i in range(self.ell):
             # Construct a subsample
-            w_i = bytes(itemgetter(*self.positions[i])(w))
+            w_i = bytes(itemgetter(*positions[i])(w))
             # Make uniform using HMAC
             pad = hmac.digest(key=w_i, msg=self.h[i], digest=self.digest)
             # One Time Pad
@@ -210,11 +209,18 @@ class FuzzyExtractor:
         Returns:
             bytes: The reproduced key if successful; None otherwise.
         """
+        # Generate \ell subsample positions
+        rng = np.random.default_rng(seed=self.seed)
+        positions = rng.choice(
+            len(w_),
+            size=(self.ell, self.m),
+            replace=True
+            )
 
         # Begin opening locks
         for i in range(self.ell):
             # Construct a subsample
-            w_i = bytes(itemgetter(*self.positions[i])(w_))
+            w_i = bytes(itemgetter(*positions[i])(w_))
             # Attempt to recreate the pad
             pad_ = hmac.digest(key=w_i, msg=self.h[i], digest=self.digest)
             # One Time Pad decrypt
