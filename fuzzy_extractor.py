@@ -145,7 +145,6 @@ class FuzzyExtractor:
         # Pre-compute zero string for faster comparison
         self.zeros = bytes([0] * self.t)
 
-        logging.info("FuzzyExtractor initialized with %d lockers.", self.ell)
 
 
     def generate(self, w: bytes) -> bytes:
@@ -331,6 +330,7 @@ def main(num_rep, locker_num):
         raise
 
     fe = FuzzyExtractor(locker_num=locker_num)
+    logging.info("FuzzyExtractor initialized with %d lockers.", locker_num)
 
     # Server obtains sample W
     t = time.perf_counter()
