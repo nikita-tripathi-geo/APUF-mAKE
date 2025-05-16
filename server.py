@@ -77,9 +77,9 @@ def server_ake(user: socket.socket, srv_id: bytes,
     h1 = sha256(n1 + todigest).digest()
 
 
-    # Step 2: Send ctxt, n1, srv_id (B) to the user
+    # Step 2: Send ctxt, n1, srv_id (B), FE nonces to the user
     try:
-        send_msg(user, public_helper + n1 + srv_id)
+        send_msg(user, public_helper + n1 + srv_id + b"".join(fe.h))
     except SocketIOError as e:
         print(f"(Server) AKE failed on message 2: {e}")
         return  b""
