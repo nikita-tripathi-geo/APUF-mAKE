@@ -105,7 +105,7 @@ class FuzzyExtractor:
         key_len: int = 128,
         mac_key_len: int = 128,
         padding_len: int = 128,
-        nonce_len: int = 64,
+        nonce_len: int = 128,
         seed: int = 0
     ) -> None:
         """
@@ -117,7 +117,7 @@ class FuzzyExtractor:
             key_len (int): Desired length of the key to generate in bits.
             mac_key_len (int): Length of MAC key for authentication in bits.
             padding_len (int): Length of zero padding in bits.
-            nonce_len (int): Length of nonce used for each locker in bytes.
+            nonce_len (int): Length of nonce used for each locker in bits.
             seed (int): 32-bit PRNG seed used for subsample generation. 
         """
 
@@ -127,7 +127,7 @@ class FuzzyExtractor:
         self.xi = key_len // 8
         self.lbd = mac_key_len // 8
         self.t = padding_len // 8
-        self.nonce_len = nonce_len
+        self.nonce_len = nonce_len // 8
         self.seed = seed
 
         # Total message length (0^t || R || R_1)
