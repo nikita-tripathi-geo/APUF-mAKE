@@ -54,6 +54,13 @@ This is a demo implementation of a novel mutually authenticated key exchange (mA
    np.save("challenges/1_mil_challenges.npy", chals)
    ```
 
+   Challenge generation takes some time. If you don't want to wait too long, you may choose to use my pre-generated challenges, which can be downloaded using `git lfs`.
+
+   ```bash
+   git lfs pull --include="challenges/1_mil_challenges.npy"
+   ```
+   > The challenge file (1 million challenges) is approximately 1.03 GB.
+
 ---
 
 ## 💡 Usage
@@ -99,6 +106,8 @@ TODO
 ## ⏱️ Benchmarks
 
 TODO
+
+Benchmarks for each parameter (locker size $\ell$).
 
 ---
 
