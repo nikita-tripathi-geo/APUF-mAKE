@@ -1,7 +1,12 @@
 #!/usr/bin/python3
-"""Implements the server-side of the mAKE protocol.
+"""Server-side implementation of the mAKE protocol.
 
-TODO
+This module implements the server-facing operations for the
+mAKE (mutually Authenticated Key Exchange) protocol.
+It includes two methods: registration and the actual AKE.
+
+This code is for demonstrational purposes only,
+it is not suitable for a production environment.
 """
 from secrets import token_bytes
 from hashlib import sha256
@@ -17,14 +22,22 @@ from socket_helper import (
 from fuzzy_extractor import FuzzyExtractor
 
 
-def server_registration(user: socket.socket, result_filename: str) -> None:
-    """Registration phase of the AKE, performed by the server.
-    TODO - google-style docstring
+def server_registration(user: socket.socket, resp_filename: str) -> None:
+    """Server-side registration phase of mAKE.
+
+    This function receives the user's responses (W) and stores them in a file.
+
+    Args:
+        user (socket.socket): Connected socket from the user.
+        resp_filename (str): Path to the file where the sample will be stored.
+
+    Raises:
+        SocketIOError: If receiving the sample (W) fails.
     """
     # Step 1: Receive the sample (W)
     try:
         sample = recv_msg(user)
-        with open(result_filename, "wb") as f:
+        with open(resp_filename, "wb") as f:
             f.write(sample)
     except SocketIOError as e:
         print(f"(Server) Registration failed: {e}")
@@ -35,8 +48,28 @@ def server_registration(user: socket.socket, result_filename: str) -> None:
 def server_ake(
     user: socket.socket, srv_id: bytes, w_filename: str, fe_seed: int
 ) -> bytes:
-    """TODO
-    fe_seed is the seed used by FE :D
+    """Server-side protocol execution phase of mAKE.
+
+    This function executes the following steps:
+      1. Receive 'hello' and user id (A) from client.
+      2. Load PUF response and use fuzzy extractor to get K and helper data.
+      3. Generate nonce1 and first authentication hash h1.
+      4. Send helper data, nonce1, and server id (B) to user.
+      5. Receive and verify client's authentication hash h1'. Receive nonce2.
+      6. Compute and send second authentication hash h2'.
+      7. Derive and return session key.
+
+    Args:
+        user (socket.socket): Connected socket from the user.
+        srv_id (bytes): Server identifier (4-byte value).
+        w_filename (str): File path to stored PUF sample from registration.
+        fe_seed (int): Seed used to initialize the fuzzy extractor.
+
+    Returns:
+        bytes: The established session key, or empty bytes on failure.
+
+    Raises:
+        SocketIOError: On any socket communication error or protocol mismatch.
     """
 
     # Step 1: Receives hello and A (4 + 4 = 8 bytes)
