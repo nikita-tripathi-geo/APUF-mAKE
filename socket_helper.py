@@ -1,15 +1,17 @@
-"""Small helpers for length-prefixed, big-endian TCP messages.
-"""
+"""Small helpers for length-prefixed, big-endian TCP messages."""
+
 import socket
 import struct
 
 # CONFIGURATION
-DEFAULT_TIMEOUT = 100.0     # seconds for connect/recv/send
-_LEN_HDR = 4              # 4-byte length prefix (uint32, big-endian)
+DEFAULT_TIMEOUT = 100.0  # seconds for connect/recv/send
+_LEN_HDR = 4  # 4-byte length prefix (uint32, big-endian)
+
 
 # EXCEPTIONS
 class SocketIOError(Exception):
     """Raised on any failure in our socket I/O helpers."""
+
 
 # SOCKET LIFECYCLE
 def create_socket(ip: str, port: int, listen: bool = False) -> socket.socket:
@@ -17,15 +19,15 @@ def create_socket(ip: str, port: int, listen: bool = False) -> socket.socket:
 
     Creates a TCP/IP socket at the specified port, and does the setup
     necessary to turn it into a connecting or receiving socket.
-    
+
     Args:
         ip (str): A string representing the IP address to connect/bind to.
         port (int): An integer representing the port to connect/bind to.
         listen (bool): A boolean that flags whether or not to set the socket up
             for connecting or receiving.
-    
+
     Returns:
-        If successful, a socket object that's been prepared according to 
+        If successful, a socket object that's been prepared according to
         the `listen` flag.
 
     Raises:
@@ -161,7 +163,7 @@ def recv_msg(sock: socket.socket) -> bytes:
     """
     # 1) Read the 4-byte size header
     raw_len = _recvall(sock, _LEN_HDR)
-    (length, ) = struct.unpack(">I", raw_len)
+    (length,) = struct.unpack(">I", raw_len)
 
     # guard against absurdly large allocations (100MB = 100 * 2^20 B)
     if length > (100 * 2**20):

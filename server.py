@@ -7,9 +7,14 @@ from secrets import token_bytes
 from hashlib import sha256
 import socket
 
-from socket_helper import create_socket, close_socket, send_msg, recv_msg, SocketIOError
+from socket_helper import (
+    create_socket,
+    close_socket,
+    send_msg,
+    recv_msg,
+    SocketIOError,
+)
 from fuzzy_extractor import FuzzyExtractor
-
 
 
 def server_registration(user: socket.socket, result_filename: str) -> None:
@@ -27,8 +32,9 @@ def server_registration(user: socket.socket, result_filename: str) -> None:
     return
 
 
-def server_ake(user: socket.socket, srv_id: bytes,
-               w_filename: str, fe_seed: int) -> bytes:
+def server_ake(
+    user: socket.socket, srv_id: bytes, w_filename: str, fe_seed: int
+) -> bytes:
     """TODO
     fe_seed is the seed used by FE :D
     """
@@ -58,7 +64,7 @@ def server_ake(user: socket.socket, srv_id: bytes,
         mac_key_len=128,
         padding_len=128,
         nonce_len=128,
-        seed=fe_seed
+        seed=fe_seed,
     )
 
     # K_sid
@@ -76,14 +82,12 @@ def server_ake(user: socket.socket, srv_id: bytes,
     todigest = public_helper + usr_id + srv_id + key
     h1 = sha256(n1 + todigest).digest()
 
-
     # Step 2: Send ctxt, n1, srv_id (B), FE nonces to the user
     try:
         send_msg(user, public_helper + n1 + srv_id + b"".join(fe.h))
     except SocketIOError as e:
         print(f"(Server) AKE failed on message 2: {e}")
-        return  b""
-
+        return b""
 
     # Step 3: Receive h1' and n2 (nonce2), which is 32+4 = 36 bytes
     try:
@@ -105,14 +109,12 @@ def server_ake(user: socket.socket, srv_id: bytes,
     # Step 3.1: generate second hash using nonce2
     h2_prime = sha256(n2 + todigest).digest()
 
-
     # Step 4: Send ctxt, n1, srv_id (B) to the user
     try:
         send_msg(user, h2_prime)
     except SocketIOError as e:
         print(f"(Server) AKE failed on message 4: {e}")
-        return  b""
-
+        return b""
 
     # Step 5: Generate session key
     session_key = sha256(todigest).digest()
@@ -120,10 +122,9 @@ def server_ake(user: socket.socket, srv_id: bytes,
     return session_key
 
 
-
-
 if __name__ == "__main__":
     from sys import argv
+
     # assume input is correct
     print(f"IP: {argv[1]}, PORT: {argv[2]}")
     ip = argv[1]
