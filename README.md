@@ -15,7 +15,7 @@ This is a demo implementation of a novel mutually authenticated key exchange (mA
 - **PUF-based secrets**: No pre-distributed keys—only PUF measurements.  
 - **Fuzzy Extractor** for error correction and helper-data generation.
 - **Mutual authentication** via fresh nonces and HMAC/SHA-256 hashes.
-- **Post-quantum security**: The protocol only uses hashing and bit-wise XOR operations, resulting in post-quantum security in the random oracle (RO) model.
+- **Post-quantum security**: The protocol only uses hashing and bit-wise XOR operations, resulting in fast computation and post-quantum security in the random oracle (RO) model.
 - **Modular**: Easily swap in your own PUF simulator (e.g., [APUF-simulation](https://github.com/nikita-tripathi-geo/APUF-simulation)) or any other noisy source (biometrics, quantum phenomena, etc.).
 
 ---
